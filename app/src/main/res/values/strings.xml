@@ -9,4 +9,11 @@
         <item>Feminino</item>
     </string-array>
 
+    <string-array name="filtros">
+        <item>Todos</item>
+        <item>Pessoa Física</item>
+        <item>Pessoa Jurídica</item>
+        <item>Espólio</item>
+    </string-array>
+
 </resources>
