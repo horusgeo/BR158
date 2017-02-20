@@ -40,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //TODO: return check login
                 doLogin();
 //                checkIfLoginValid();
             }

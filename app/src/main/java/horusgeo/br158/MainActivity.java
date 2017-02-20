@@ -7,6 +7,13 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+class listRegister{
+    private int id;
+    private String name;
+    private String type;
+}
+
+
 public class MainActivity extends AppCompatActivity {
 
     Spinner filterRegistersSpinner;
