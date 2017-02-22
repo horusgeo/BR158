@@ -4,9 +4,12 @@
     <string name="button_props">Cadastro de Proprietários</string>
     <string name="dados_do_proprietario">Dados do Proprietário</string>
     <string name="nome">Nome: </string>
-    <string-array name="sexo">
-        <item>Masculino</item>
-        <item>Feminino</item>
+    <string-array name="estadoCivil">
+        <item>Casado</item>
+        <item>Divorciado</item>
+        <item>Viúvo</item>
+        <item>Solteiro</item>
+        <item>União Estável</item>
     </string-array>
 
     <string-array name="filtros">

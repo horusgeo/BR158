@@ -5,12 +5,13 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+
 public class RegisterActivity extends AppCompatActivity {
 
-    Spinner spinnerSexo;
+    Spinner spinnerEstadoCivil;
 
 
-    ArrayAdapter<CharSequence> adapterSexo;
+    ArrayAdapter<CharSequence> adapterEstadoCivil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,10 +19,10 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
 
-        spinnerSexo = (Spinner) findViewById(R.id.spinnerSexo);
-        adapterSexo = ArrayAdapter.createFromResource(this, R.array.sexo, android.R.layout.simple_spinner_item);
-        adapterSexo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerSexo.setAdapter(adapterSexo);
+        spinnerEstadoCivil = (Spinner) findViewById(R.id.spinnerEstadoCivil);
+        adapterEstadoCivil = ArrayAdapter.createFromResource(this, R.array.estadoCivil, android.R.layout.simple_spinner_item);
+        adapterEstadoCivil.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerEstadoCivil.setAdapter(adapterEstadoCivil);
     }
 
 }
