@@ -2,20 +2,12 @@ package horusgeo.br158;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
-
-public class RegisterActivity extends AppCompatActivity {
-
-    Spinner spinnerEstadoCivil;
-
+public class RegisterJuridicoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-
+        setContentView(R.layout.activity_register_juridico);
     }
-
 }

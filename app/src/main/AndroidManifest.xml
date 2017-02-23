@@ -38,7 +38,9 @@
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".RegisterJuridicoActivity" />
+        <activity android:name=".infoPropActivity"></activity>
     </application>
 
 </manifest>

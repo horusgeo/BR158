@@ -19,4 +19,30 @@
         <item>Espólio</item>
     </string-array>
 
+    <string-array name="zoneamento">
+        <item>Rural</item>
+        <item>Urbano</item>
+        <item>Expansão Urbana</item>
+    </string-array>
+
+    <string-array name="topografia">
+        <item>Acidentado</item>
+        <item>Aclive acidentado</item>
+        <item>Aclive suave</item>
+        <item>Declive acentuado</item>
+        <item>Declive suave</item>
+        <item>Plano/semi-plano</item>
+    </string-array>
+
+    <string-array name="sn">
+        <item>Sim</item>
+        <item>Não</item>
+    </string-array>
+
+    <string-array name="situacao">
+        <item>Seco</item>
+        <item>Alagável</item>
+        <item>Parcialmente Alagável</item>
+    </string-array>
+
 </resources>
