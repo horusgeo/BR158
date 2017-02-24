@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_info_prop"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -86,6 +86,674 @@
             android:layout_marginRight="8dp"
             android:entries="@array/zoneamento"
             />
+
+        <TextView
+            android:text="Topografia:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView86"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView85"
+            android:layout_marginTop="22dp"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinnerTopografia"
+            android:layout_marginStart="24dp"
+            app:layout_constraintLeft_toRightOf="@+id/textView86"
+            android:layout_marginLeft="24dp"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            app:layout_constraintTop_toTopOf="@+id/textView86"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="8dp"
+            android:entries="@array/topografia"
+            />
+
+        <TextView
+            android:text="Infraestrutura:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView87"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView86"
+            android:layout_marginTop="22dp"
+            android:textSize="18sp" />
+
+        <Switch
+            android:layout_height="wrap_content"
+            android:id="@+id/switchRedeEletrica"
+            app:layout_constraintLeft_toRightOf="@+id/textView87"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView87"
+            android:textOn="Sim"
+            android:textOff="Não"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:showText="true"
+            android:text="Rede elétrica"
+            app:layout_constraintHorizontal_bias="1.0" />
+
+        <Switch
+            android:layout_height="wrap_content"
+            android:id="@+id/switchSinalTelefone"
+            app:layout_constraintLeft_toRightOf="@+id/textView87"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchRedeEletrica"
+            android:textOn="Sim"
+            android:textOff="Não"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:showText="true"
+            android:text="Sinal de telefone"
+            android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="1.0" />
+
+        <Switch
+            android:layout_height="wrap_content"
+            android:id="@+id/switchAbastecimentoAgua"
+            app:layout_constraintLeft_toRightOf="@+id/textView87"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchSinalTelefone"
+            android:textOn="Sim"
+            android:textOff="Não"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:showText="true"
+            android:text="Abastecimento de água"
+            android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="1.0" />
+
+        <TextView
+            android:text="Manancial de água:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView88"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/switchAbastecimentoAgua"
+            android:layout_marginTop="16dp"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinnerManancial"
+            android:layout_marginStart="24dp"
+            app:layout_constraintLeft_toRightOf="@+id/textView88"
+            android:layout_marginLeft="24dp"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            app:layout_constraintTop_toTopOf="@+id/textView88"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="8dp"
+            android:entries="@array/sn"
+            />
+
+        <TextView
+            android:text="Situação:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView89"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView88"
+            android:layout_marginTop="22dp"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinnerSituacao"
+            android:layout_marginStart="24dp"
+            app:layout_constraintLeft_toRightOf="@+id/textView89"
+            android:layout_marginLeft="24dp"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            app:layout_constraintTop_toTopOf="@+id/textView89"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="8dp"
+            android:entries="@array/situacao"
+            />
+
+        <ImageView
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/bar"
+            android:id="@+id/imageView26"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView89"
+            android:layout_width="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="16dp" />
+
+        <TextView
+            android:text="Característica da Região"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView90"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            android:textStyle="normal|bold"
+            android:textAlignment="center"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView26" />
+
+        <ImageView
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/bar"
+            android:id="@+id/imageView27"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView90"
+            android:layout_width="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="16dp" />
+
+        <TextView
+            android:text="Serviços comunitários\ndisponiveis \n(em até 1km):"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView91"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView27"
+            android:layout_marginTop="18dp"
+            android:textSize="18sp"
+            />
+
+        <Switch
+            android:layout_height="wrap_content"
+            android:id="@+id/switchColetaLixo"
+            app:layout_constraintLeft_toRightOf="@+id/textView91"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/textView91"
+            android:textOn="Sim"
+            android:textOff="Não"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:showText="true"
+            android:text="Coleta de Lixo"
+            app:layout_constraintHorizontal_bias="1.0" />
+
+        <Switch
+            android:layout_height="wrap_content"
+            android:id="@+id/switchTransporte"
+            app:layout_constraintLeft_toRightOf="@+id/textView91"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchColetaLixo"
+            android:textOn="Sim"
+            android:textOff="Não"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:showText="true"
+            android:text="Transporte"
+            android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="1.0" />
+
+        <Switch
+            android:layout_height="wrap_content"
+            android:id="@+id/switchSaude"
+            app:layout_constraintLeft_toRightOf="@+id/textView91"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchTransporte"
+            android:textOn="Sim"
+            android:textOff="Não"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:showText="true"
+            android:text="Saúde"
+            android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="1.0" />
+
+        <Switch
+            android:layout_height="wrap_content"
+            android:id="@+id/switchEscola"
+            app:layout_constraintLeft_toRightOf="@+id/textView91"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchSaude"
+            android:textOn="Sim"
+            android:textOff="Não"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:showText="true"
+            android:text="Escola"
+            android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="1.0" />
+
+        <Switch
+            android:layout_height="wrap_content"
+            android:id="@+id/switchComercio"
+            app:layout_constraintLeft_toRightOf="@+id/textView91"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchEscola"
+            android:textOn="Sim"
+            android:textOff="Não"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:showText="true"
+            android:text="Comércio"
+            android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="1.0" />
+
+        <Switch
+            android:layout_height="wrap_content"
+            android:id="@+id/switchLazer"
+            app:layout_constraintLeft_toRightOf="@+id/textView91"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchComercio"
+            android:textOn="Sim"
+            android:textOff="Não"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:showText="true"
+            android:text="Lazer"
+            android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="1.0" />
+
+        <Switch
+            android:layout_height="wrap_content"
+            android:id="@+id/switchSeguranca"
+            app:layout_constraintLeft_toRightOf="@+id/textView91"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchLazer"
+            android:textOn="Sim"
+            android:textOff="Não"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:showText="true"
+            android:text="Segurança"
+            android:layout_marginTop="8dp"
+            app:layout_constraintHorizontal_bias="1.0" />
+
+        <TextView
+            android:text="Uso predominante\nnaRegiao:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView92"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/switchSeguranca"
+            android:layout_marginTop="16dp"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/spinnerUso"
+            android:layout_marginStart="24dp"
+            app:layout_constraintLeft_toRightOf="@+id/textView92"
+            android:layout_marginLeft="24dp"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            app:layout_constraintTop_toTopOf="@+id/textView92"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="8dp"
+            android:entries="@array/uso"
+            />
+
+        <ImageView
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/bar"
+            android:id="@+id/imageView28"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView92"
+            android:layout_width="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="16dp" />
+
+        <TextView
+            android:text="Confrontantes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView93"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            android:textStyle="normal|bold"
+            android:textAlignment="center"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView28" />
+
+        <ImageView
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/bar"
+            android:id="@+id/imageView29"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView93"
+            android:layout_width="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="16dp" />
+
+        <TextView
+            android:text="Lado Direito:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView94"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView29"
+            android:layout_marginTop="18dp"
+            android:textSize="18sp"
+            />
+
+        <EditText
+            android:layout_width="0dp"
+            android:inputType="textPersonName"
+            android:id="@+id/confLadoDireitoText"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toRightOf="@+id/textView94"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="8dp"
+            app:layout_constraintTop_toTopOf="@+id/textView94"
+            android:hint="Lado Direito"
+            android:textSize="16sp"
+            android:minLines="1"
+            android:layout_height="38dp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:text="Lado Esquerdo:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView95"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView94"
+            android:layout_marginTop="18dp"
+            android:textSize="18sp"
+            />
+
+        <EditText
+            android:layout_width="0dp"
+            android:inputType="textPersonName"
+            android:id="@+id/confLadoEsquerdoText"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toRightOf="@+id/textView95"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="8dp"
+            app:layout_constraintTop_toTopOf="@+id/textView95"
+            android:hint="Lado Esquerdo"
+            android:textSize="16sp"
+            android:minLines="1"
+            android:layout_height="38dp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:text="Frente:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView96"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView95"
+            android:layout_marginTop="18dp"
+            android:textSize="18sp"
+            />
+
+        <EditText
+            android:layout_width="0dp"
+            android:inputType="textPersonName"
+            android:id="@+id/confFrenteText"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toRightOf="@+id/textView96"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="8dp"
+            app:layout_constraintTop_toTopOf="@+id/textView96"
+            android:hint="Frente"
+            android:textSize="16sp"
+            android:minLines="1"
+            android:layout_height="38dp"
+            android:textAlignment="center" />
+
+        <TextView
+            android:text="Fundos:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView97"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView96"
+            android:layout_marginTop="18dp"
+            android:textSize="18sp"
+            />
+
+        <EditText
+            android:layout_width="0dp"
+            android:inputType="textPersonName"
+            android:id="@+id/confFundosText"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toRightOf="@+id/textView97"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="8dp"
+            app:layout_constraintTop_toTopOf="@+id/textView97"
+            android:hint="Fundos"
+            android:textSize="16sp"
+            android:minLines="1"
+            android:layout_height="38dp"
+            android:textAlignment="center" />
+
+        <ImageView
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/bar"
+            android:id="@+id/imageView30"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView97"
+            android:layout_width="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="16dp" />
+
+        <TextView
+            android:text="Benfeitorias"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView98"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            android:textStyle="normal|bold"
+            android:textAlignment="center"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/imageView30" />
+
+        <ImageView
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/bar"
+            android:id="@+id/imageView31"
+            android:layout_marginTop="4dp"
+            app:layout_constraintTop_toBottomOf="@+id/textView98"
+            android:layout_width="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="16dp" />
+
+        <Switch
+        android:layout_height="wrap_content"
+        android:id="@+id/switchConstrucoes"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView31"
+        android:textOn="Sim"
+        android:textOff="Não"
+        android:layout_width="wrap_content"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:showText="true"
+        android:text="Possui Construções: " />
+
+        <EditText
+            android:layout_width="0dp"
+            android:inputType="textPersonName"
+            android:id="@+id/benfConstucoesText"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/switchConstrucoes"
+            android:hint="Construções"
+            android:textSize="16sp"
+            android:minLines="1"
+            android:layout_height="38dp"
+            android:textAlignment="center"
+            android:focusable="false"
+            />
+
+        <Switch
+            android:layout_height="wrap_content"
+            android:id="@+id/switchEquipamentos"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/benfConstucoesText"
+            android:textOn="Sim"
+            android:textOff="Não"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:showText="true"
+            android:text="Possui equipamentos: " />
+
+        <EditText
+            android:layout_width="0dp"
+            android:inputType="textPersonName"
+            android:id="@+id/benfEquipamentosText"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/switchEquipamentos"
+            android:hint="Equipamentos"
+            android:textSize="16sp"
+            android:minLines="1"
+            android:layout_height="38dp"
+            android:textAlignment="center"
+            android:focusable="false"
+            />
+
+        <Switch
+            android:layout_height="wrap_content"
+            android:id="@+id/switchCroquis"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/benfEquipamentosText"
+            android:textOn="Sim"
+            android:textOff="Não"
+            android:layout_width="wrap_content"
+            android:textSize="18sp"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:showText="true"
+            android:text="Croquis em anexo: " />
+
+        <EditText
+            android:layout_width="0dp"
+            android:inputType="textPersonName"
+            android:id="@+id/benfCroquisText"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginRight="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/switchCroquis"
+            android:hint="Quantidade"
+            android:textSize="16sp"
+            android:minLines="1"
+            android:layout_height="38dp"
+            android:textAlignment="center"
+            android:focusable="false"
+            />
+
+
+        <Button
+            android:text="Foto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/benfFotosButton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/benfCroquisText"
+            android:layout_marginTop="4dp"
+            android:enabled="false"
+            />
+
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
