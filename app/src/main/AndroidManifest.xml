@@ -40,7 +40,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".RegisterJuridicoActivity" />
-        <activity android:name=".infoPropActivity"></activity>
+        <activity android:name=".infoPropActivity" />
+        <activity android:name=".RelatorioActivity"></activity>
     </application>
 
 </manifest>
