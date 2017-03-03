@@ -741,7 +741,6 @@
             android:focusable="false"
             />
 
-
         <Button
             android:text="Foto"
             android:layout_width="wrap_content"
