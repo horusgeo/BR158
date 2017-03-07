@@ -13,6 +13,7 @@ public class Endereco {
     private String comarca;
     private String uf2;
     private String pRef;
+    private Integer id;
 
 
     Endereco(){
@@ -97,5 +98,13 @@ public class Endereco {
 
     public void setpRef(String pRef) {
         this.pRef = pRef;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

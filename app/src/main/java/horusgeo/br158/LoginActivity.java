@@ -15,6 +15,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         loginText = (EditText) findViewById(R.id.loginText);
         passwdText = (EditText) findViewById(R.id.passwdText);
 
+
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -49,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void checkIfLoginValid(){
+
 
         String lText = loginText.getText().toString();
         if(!lText.isEmpty()){
@@ -78,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
 
 //        if(loginText.getText().toString().equals(login)){
 //            if(passwdText.getText().toString().equals(passwd)){
-                Intent intent = new Intent(LoginActivity.this, RelatorioActivity.class);
+                Intent intent = new Intent(LoginActivity.this, infoPropActivity.class);
                 LoginActivity.this.startActivity(intent);
                 LoginActivity.this.finish();
 //            }else{
