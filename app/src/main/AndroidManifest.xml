@@ -35,7 +35,7 @@
         <activity android:name=".RegisterJuridicoActivity" />
         <activity android:name=".infoPropActivity" />
         <activity android:name=".RelatorioActivity" />
-        <activity android:name=".PropriedadeActivity"></activity>
+        <activity android:name=".PropriedadeActivity" />
     </application>
 
 </manifest>
