@@ -1,7 +1,11 @@
 package horusgeo.br158;
 
 
+import java.util.ArrayList;
+
 public class Benfeitorias {
+
+    private ArrayList<String> photos;
 
     private Boolean construcoes;
     private Boolean equipamentos;
@@ -63,5 +67,13 @@ public class Benfeitorias {
 
     public void setCroquisText(String croquisText) {
         this.croquisText = croquisText;
+    }
+
+    public ArrayList<String> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(ArrayList<String> photos) {
+        this.photos = photos;
     }
 }
