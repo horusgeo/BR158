@@ -7,6 +7,8 @@ public class Benfeitorias {
 
     private ArrayList<String> photos;
 
+    private Integer id;
+
     private Boolean construcoes;
     private Boolean equipamentos;
     private Boolean croquis;
