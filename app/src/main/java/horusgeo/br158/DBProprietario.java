@@ -59,6 +59,7 @@ public class DBProprietario extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
 
+        values.put(ID, cadastro.getId());
         values.put(NOME, cadastro.getNome());
         values.put(NACIONALIDADE, cadastro.getNacionalidade());
         values.put(PROFISSAO, cadastro.getProfissao());
@@ -70,7 +71,7 @@ public class DBProprietario extends SQLiteOpenHelper {
         values.put(TEL_2, cadastro.getTel2());
         values.put(EMAIL, cadastro.getEmail());
         values.put(POSSPROP, cadastro.getPossProp());
-        values.put(ID, cadastro.getId());
+
 
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE + " WHERE " + ID + " = " + cadastro.getId();

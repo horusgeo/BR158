@@ -6,23 +6,20 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DBConjuge extends SQLiteOpenHelper {
+public class DBConfrontantes extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "br158.db";
     private static final int DATABASE_VERSION = 1;
 
-    private static final String TABLE = "conjuges";
+    private static final String TABLE = "confrontantes";
 
     private static final String ID = "id";
-    private static final String NOME = "nome";
-    private static final String NACIONALIDADE = "nacionalidade";
-    private static final String PROFISSAO = "profissao";
-    private static final String DOC_ID = "num_id";
-    private static final String TIPO = "tipo_id";
-    private static final String CPF = "cpf";
-    private static final String TEL_1 = "tel_1";
-
-    public DBConjuge(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    private static final String DIREITA = "direita";
+    private static final String ESQUERDA = "esquerda";
+    private static final String FRENTE = "frente";
+    private static final String FUNDOS = "fundos";
+    
+    public DBConfrontantes(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }
 
@@ -30,13 +27,10 @@ public class DBConjuge extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_PROP_TABLE = "CREATE TABLE " + TABLE + "(" +
                 ID + " INTEGER NOT NULL UNIQUE," +
-                NOME + " TEXT," +
-                NACIONALIDADE + " TEXT," +
-                PROFISSAO + " TEXT," +
-                DOC_ID + " TEXT," +
-                TIPO + " TEXT," +
-                CPF + " TEXT," +
-                TEL_1 + " TEXT," +
+                DIREITA + " TEXT," +
+                ESQUERDA + " TEXT," +
+                FRENTE + " TEXT," +
+                FUNDOS + " TEXT" +
                 ")";
         db.execSQL(CREATE_PROP_TABLE);
     }
@@ -47,20 +41,16 @@ public class DBConjuge extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addConj(Person cadastro){
+    public void addConfrontantes(Confrontantes cadastro){
 
         ContentValues values = new ContentValues();
 
         values.put(ID, cadastro.getId());
-        values.put(NOME, cadastro.getNome());
-        values.put(NACIONALIDADE, cadastro.getNacionalidade());
-        values.put(PROFISSAO, cadastro.getProfissao());
-        values.put(DOC_ID, cadastro.getDocId());
-        values.put(TIPO, cadastro.getDocTipo());
-        values.put(CPF, cadastro.getCpf());
-        values.put(TEL_1, cadastro.getTel1());
-
-
+        values.put(DIREITA, cadastro.getDireita());
+        values.put(ESQUERDA, cadastro.getEsquerda());
+        values.put(FRENTE, cadastro.getFrente());
+        values.put(FUNDOS, cadastro.getFundos());
+        
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE + " WHERE " + ID + " = " + cadastro.getId();
         Cursor cursor = db.rawQuery(query, null);
@@ -80,7 +70,7 @@ public class DBConjuge extends SQLiteOpenHelper {
 
     }
 
-    public void deleteConj(Person cadastro){
+    public void deleteConfrontantes(Confrontantes cadastro){
 
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE, ID + " = " + cadastro.getId(), null);
@@ -88,9 +78,9 @@ public class DBConjuge extends SQLiteOpenHelper {
 
     }
 
-    public Person getConj(Integer id){
+    public Confrontantes getConfrontantes(Integer id){
 
-        Person conjuge = new Person();
+        Confrontantes confrontantes = new Confrontantes();
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -101,14 +91,11 @@ public class DBConjuge extends SQLiteOpenHelper {
         try{
             if (cursor.moveToFirst()) {
                 cursor.moveToFirst();
-                conjuge.setId(cursor.getInt(0));
-                conjuge.setNome(cursor.getString(1));
-                conjuge.setNacionalidade(cursor.getString(2));
-                conjuge.setProfissao(cursor.getString(3));
-                conjuge.setDocId(cursor.getString(4));
-                conjuge.setDocTipo(cursor.getString(5));
-                conjuge.setCpf(cursor.getString(6));
-                conjuge.setTel1(cursor.getString(7));
+                confrontantes.setId(cursor.getInt(0));
+                confrontantes.setDireita(cursor.getString(1));
+                confrontantes.setEsquerda(cursor.getString(2));
+                confrontantes.setFrente(cursor.getString(3));
+                confrontantes.setFundos(cursor.getString(4));
             }
         }finally{
             cursor.close();
@@ -116,7 +103,7 @@ public class DBConjuge extends SQLiteOpenHelper {
 
         db.close();
 
-        return conjuge;
+        return confrontantes;
 
     }
 

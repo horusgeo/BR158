@@ -2,13 +2,13 @@ package horusgeo.br158;
 
 public class Regiao {
 
-    private Boolean coletaLixo;
-    private Boolean transporte;
-    private Boolean saude;
-    private Boolean escola;
-    private Boolean comercio;
-    private Boolean lazer;
-    private Boolean seguranca;
+    private Integer coletaLixo;
+    private Integer transporte;
+    private Integer saude;
+    private Integer escola;
+    private Integer comercio;
+    private Integer lazer;
+    private Integer seguranca;
     private String uso;
     private Integer id;
 
@@ -16,59 +16,59 @@ public class Regiao {
 
     }
 
-    public Boolean getColetaLixo() {
+    public Integer getColetaLixo() {
         return coletaLixo;
     }
 
-    public void setColetaLixo(Boolean coletaLixo) {
+    public void setColetaLixo(Integer coletaLixo) {
         this.coletaLixo = coletaLixo;
     }
 
-    public Boolean getTransporte() {
+    public Integer getTransporte() {
         return transporte;
     }
 
-    public void setTransporte(Boolean transporte) {
+    public void setTransporte(Integer transporte) {
         this.transporte = transporte;
     }
 
-    public Boolean getSaude() {
+    public Integer getSaude() {
         return saude;
     }
 
-    public void setSaude(Boolean saude) {
+    public void setSaude(Integer saude) {
         this.saude = saude;
     }
 
-    public Boolean getEscola() {
+    public Integer getEscola() {
         return escola;
     }
 
-    public void setEscola(Boolean escola) {
+    public void setEscola(Integer escola) {
         this.escola = escola;
     }
 
-    public Boolean getComercio() {
+    public Integer getComercio() {
         return comercio;
     }
 
-    public void setComercio(Boolean comercio) {
+    public void setComercio(Integer comercio) {
         this.comercio = comercio;
     }
 
-    public Boolean getLazer() {
+    public Integer getLazer() {
         return lazer;
     }
 
-    public void setLazer(Boolean lazer) {
+    public void setLazer(Integer lazer) {
         this.lazer = lazer;
     }
 
-    public Boolean getSeguranca() {
+    public Integer getSeguranca() {
         return seguranca;
     }
 
-    public void setSeguranca(Boolean seguranca) {
+    public void setSeguranca(Integer seguranca) {
         this.seguranca = seguranca;
     }
 

@@ -51,10 +51,11 @@ public class DBJuridico extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addProp(Person cadastro){
+    public void addJur(Person cadastro){
 
         ContentValues values = new ContentValues();
 
+        values.put(ID, cadastro.getId());
         values.put(NOME, cadastro.getNome());
         values.put(NACIONALIDADE, cadastro.getNacionalidade());
         values.put(PROFISSAO, cadastro.getProfissao());
@@ -64,7 +65,7 @@ public class DBJuridico extends SQLiteOpenHelper {
         values.put(CPF, cadastro.getCpf());
         values.put(TEL_1, cadastro.getTel1());
         values.put(EMAIL, cadastro.getEmail());
-        values.put(ID, cadastro.getId());
+
 
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE + " WHERE " + ID + " = " + cadastro.getId();
@@ -85,7 +86,7 @@ public class DBJuridico extends SQLiteOpenHelper {
 
     }
 
-    public void deleteProp(Person cadastro){
+    public void deleteJur(Person cadastro){
 
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE, ID + " = " + cadastro.getId(), null);
@@ -93,7 +94,7 @@ public class DBJuridico extends SQLiteOpenHelper {
 
     }
 
-    public Person getProp(Integer id){
+    public Person getJur(Integer id){
 
         Person juridico = new Person();
 
