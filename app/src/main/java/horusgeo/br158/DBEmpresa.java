@@ -9,27 +9,22 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBProprietario extends SQLiteOpenHelper {
+public class DBEmpresa extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "br158.db";
     private static final int DATABASE_VERSION = 1;
 
-    private static final String TABLE = "proprietarios";
+    private static final String TABLE = "empresa";
 
     private static final String ID = "id";
     private static final String NOME = "nome";
-    private static final String NACIONALIDADE = "nacionalidade";
-    private static final String PROFISSAO = "profissao";
-    private static final String ESTADO_CIVIL = "estado_civil";
-    private static final String DOC_ID = "num_id";
-    private static final String TIPO = "tipo_id";
-    private static final String CPF = "cpf";
+    private static final String CNPJ = "cnpj";
     private static final String TEL_1 = "tel_1";
     private static final String TEL_2 = "tel_2";
+    private static final String CONTATO = "contato";
     private static final String EMAIL = "email";
-    private static final String POSSPROP = "poss_prop";
 
-    public DBProprietario(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    public DBEmpresa(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }
 
@@ -38,16 +33,11 @@ public class DBProprietario extends SQLiteOpenHelper {
         String CREATE_PROP_TABLE = "CREATE TABLE " + TABLE + "(" +
                 ID + " INTEGER NOT NULL UNIQUE," +
                 NOME + " TEXT," +
-                NACIONALIDADE + " TEXT," +
-                PROFISSAO + " TEXT," +
-                ESTADO_CIVIL + " TEXT," +
-                DOC_ID + " TEXT," +
-                TIPO + " TEXT," +
-                CPF + " TEXT," +
+                CNPJ + " TEXT," +
                 TEL_1 + " TEXT," +
                 TEL_2 + " TEXT," +
-                EMAIL + " TEXT," +
-                POSSPROP + " TEXT" +
+                CONTATO + " TEXT," +
+                EMAIL + " TEXT" +
                 ")";
         db.execSQL(CREATE_PROP_TABLE);
     }
@@ -58,22 +48,18 @@ public class DBProprietario extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addProp(Person cadastro){
+    public void addEmpresa(Empresa cadastro){
 
         ContentValues values = new ContentValues();
 
         values.put(ID, cadastro.getId());
         values.put(NOME, cadastro.getNome());
-        values.put(NACIONALIDADE, cadastro.getNacionalidade());
-        values.put(PROFISSAO, cadastro.getProfissao());
-        values.put(ESTADO_CIVIL, cadastro.getEstadoCivil());
-        values.put(DOC_ID, cadastro.getDocId());
-        values.put(TIPO, cadastro.getDocTipo());
-        values.put(CPF, cadastro.getCpf());
+        values.put(CNPJ, cadastro.getCnpj());
         values.put(TEL_1, cadastro.getTel1());
         values.put(TEL_2, cadastro.getTel2());
+        values.put(CONTATO, cadastro.getContato());
         values.put(EMAIL, cadastro.getEmail());
-        values.put(POSSPROP, cadastro.getPossProp());
+
 
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -95,7 +81,7 @@ public class DBProprietario extends SQLiteOpenHelper {
 
     }
 
-    public void deleteProp(Person cadastro){
+    public void deleteEmpresa(Empresa cadastro){
 
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE, ID + " = " + cadastro.getId(), null);
@@ -103,9 +89,9 @@ public class DBProprietario extends SQLiteOpenHelper {
 
     }
 
-    public Person getProp(Integer id){
+    public Empresa getEmpresa(Integer id){
 
-        Person proprietario = new Person();
+        Empresa empresa = new Empresa();
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -116,18 +102,13 @@ public class DBProprietario extends SQLiteOpenHelper {
         try{
             if (cursor.moveToFirst()) {
                 cursor.moveToFirst();
-                proprietario.setId(cursor.getInt(0));
-                proprietario.setNome(cursor.getString(1));
-                proprietario.setNacionalidade(cursor.getString(2));
-                proprietario.setProfissao(cursor.getString(3));
-                proprietario.setEstadoCivil(cursor.getString(4));
-                proprietario.setDocId(cursor.getString(5));
-                proprietario.setDocTipo(cursor.getString(6));
-                proprietario.setCpf(cursor.getString(7));
-                proprietario.setTel1(cursor.getString(8));
-                proprietario.setTel2(cursor.getString(9));
-                proprietario.setEmail(cursor.getString(10));
-                proprietario.setPossProp(cursor.getString(11));
+                empresa.setId(cursor.getInt(0));
+                empresa.setNome(cursor.getString(1));
+                empresa.setCnpj(cursor.getString(2));
+                empresa.setTel1(cursor.getString(3));
+                empresa.setTel2(cursor.getString(4));
+                empresa.setContato(cursor.getString(5));
+                empresa.setEmail(cursor.getString(6));
             }
         }finally{
             cursor.close();
@@ -135,10 +116,9 @@ public class DBProprietario extends SQLiteOpenHelper {
 
         db.close();
 
-        return proprietario;
+        return empresa;
 
     }
-
 
     public List<ListRegister> getAllIdNames(){
         List<ListRegister> registerList = new ArrayList<ListRegister>();
@@ -167,5 +147,5 @@ public class DBProprietario extends SQLiteOpenHelper {
     }
 
 
-
 }
+

@@ -712,17 +712,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/switchCroquis" />
 
-        <Button
-            android:id="@+id/benfFotosButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:enabled="false"
-            android:text="Foto"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/benfCroquisText" />
-
         <ImageView
             android:id="@+id/imageView32"
             android:layout_width="wrap_content"
@@ -734,7 +723,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/benfFotosButton"
+            app:layout_constraintTop_toBottomOf="@id/benfCroquisText"
             app:srcCompat="@drawable/bar" />
 
         <TextView
@@ -883,11 +872,12 @@
             android:id="@+id/savePlantacaoButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:text="Salvar Plantação"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView103" />
+            app:layout_constraintTop_toBottomOf="@id/textView103"
+            app:layout_constraintHorizontal_bias="0.502" />
 
         <TextView
             android:id="@+id/textView104"

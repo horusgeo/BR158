@@ -1,17 +1,12 @@
 package horusgeo.br158;
 
-
-import java.util.ArrayList;
-
 public class Benfeitorias {
-
-    private ArrayList<String> photos;
 
     private Integer id;
 
-    private Boolean construcoes;
-    private Boolean equipamentos;
-    private Boolean croquis;
+    private Integer construcoes;
+    private Integer equipamentos;
+    private Integer croquis;
 
     private String constucoesText;
     private String equipamentosText;
@@ -23,27 +18,27 @@ public class Benfeitorias {
 
     }
 
-    public Boolean getConstrucoes() {
+    public Integer getConstrucoes() {
         return construcoes;
     }
 
-    public void setConstrucoes(Boolean construcoes) {
+    public void setConstrucoes(Integer construcoes) {
         this.construcoes = construcoes;
     }
 
-    public Boolean getEquipamentos() {
+    public Integer getEquipamentos() {
         return equipamentos;
     }
 
-    public void setEquipamentos(Boolean equipamentos) {
+    public void setEquipamentos(Integer equipamentos) {
         this.equipamentos = equipamentos;
     }
 
-    public Boolean getCroquis() {
+    public Integer getCroquis() {
         return croquis;
     }
 
-    public void setCroquis(Boolean croquis) {
+    public void setCroquis(Integer croquis) {
         this.croquis = croquis;
     }
 
@@ -71,11 +66,12 @@ public class Benfeitorias {
         this.croquisText = croquisText;
     }
 
-    public ArrayList<String> getPhotos() {
-        return photos;
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setPhotos(ArrayList<String> photos) {
-        this.photos = photos;
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

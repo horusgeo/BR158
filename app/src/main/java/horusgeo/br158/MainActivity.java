@@ -7,25 +7,41 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-class listRegister{
+import java.util.ArrayList;
+import java.util.List;
+
+class ListRegister{
     private int id;
     private String name;
-    private String type;
+
+    ListRegister(){}
+
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }
 
 
 public class MainActivity extends AppCompatActivity {
 
-    Spinner filterRegistersSpinner;
+    List<ListRegister> listProp = new ArrayList<>();
+    List<ListRegister> listEmp = new ArrayList<>();
 
-    //TODO: create functions for buttons
-    Button returnToMapButton;
-    Button addNewRegisterButton;
-
-    //TODO: create functions for manipulating the list
-    ListView registerList;
-
-    ArrayAdapter<CharSequence> adapterFiltros;
+    DBEmpresa dbEmpresa;
+    DBProprietario dbProprietario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +49,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        filterRegistersSpinner = (Spinner) findViewById(R.id.filterRegistersSpinner);
-        adapterFiltros = ArrayAdapter.createFromResource(this, R.array.filtros, android.R.layout.simple_spinner_item);
-        adapterFiltros.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        filterRegistersSpinner.setAdapter(adapterFiltros);
-        //TODO: create function for filtering
+        dbProprietario = new DBProprietario(this, null, null, 1);
+        dbEmpresa = new DBEmpresa(this, null, null, 1);
+
+        listProp.addAll(dbProprietario.getAllIdNames());
+        listEmp.addAll(dbEmpresa.getAllIdNames());
 
     }
 }
