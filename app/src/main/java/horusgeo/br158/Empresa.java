@@ -10,6 +10,7 @@ public class Empresa {
     private String tel2;
     private String contato;
     private String email;
+    private Integer id;
 
 
     Empresa(){
@@ -62,5 +63,13 @@ public class Empresa {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

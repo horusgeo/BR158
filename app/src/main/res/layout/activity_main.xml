@@ -82,7 +82,8 @@
             app:layout_constraintTop_toBottomOf="@+id/textView3"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_height="38dp" />
+            android:layout_height="38dp"
+            android:entries="@array/filtros"/>
 
         <ImageView
             android:layout_height="wrap_content"

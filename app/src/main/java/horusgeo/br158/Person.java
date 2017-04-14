@@ -13,7 +13,7 @@ public class Person{
     private String tel1;
     private String tel2;
     private String possProp;
-
+    private Integer id;
 
     Person(){
 
@@ -105,5 +105,13 @@ public class Person{
 
     public void setPossProp(String possProp) {
         this.possProp = possProp;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
