@@ -140,10 +140,10 @@ public class DBProprietario extends SQLiteOpenHelper {
     }
 
 
-    public List<ListRegister> getAllIdNames(){
-        List<ListRegister> registerList = new ArrayList<ListRegister>();
+    public List<String> getAllNames(){
+        List<String> registerList = new ArrayList<String>();
 
-        String selectQuery = "SELECT " + ID +", " + NOME + " FROM " + TABLE;
+        String selectQuery = "SELECT " + NOME + " FROM " + TABLE;
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -152,10 +152,7 @@ public class DBProprietario extends SQLiteOpenHelper {
         try {
             if (cursor.moveToFirst()) {
                 do {
-                    ListRegister cadastro = new ListRegister();
-                    cadastro.setId(cursor.getInt(0));
-                    cadastro.setName(cursor.getString(1));
-
+                    String cadastro = cursor.getString(0);
                     registerList.add(cadastro);
                 } while (cursor.moveToNext());
             }

@@ -36,6 +36,7 @@
         <activity android:name=".infoPropActivity" />
         <activity android:name=".RelatorioActivity" />
         <activity android:name=".PropriedadeActivity" />
+        <activity android:name=".addNewRegisterActivity"></activity>
     </application>
 
 </manifest>
