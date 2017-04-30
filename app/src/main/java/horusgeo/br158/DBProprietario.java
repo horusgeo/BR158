@@ -139,7 +139,6 @@ public class DBProprietario extends SQLiteOpenHelper {
 
     }
 
-
     public List<String> getAllNames(){
         List<String> registerList = new ArrayList<String>();
 
@@ -163,6 +162,43 @@ public class DBProprietario extends SQLiteOpenHelper {
         return registerList;
     }
 
+    public Integer getName2ID(String nome){
+        String selectQuery = "SELECT " + ID + " FROM " + TABLE + "WHERE " + NOME + " = " + nome;
 
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        Integer id = 0;
+
+        try {
+            if (cursor.moveToFirst())
+                id = cursor.getInt(0);
+        }finally{
+            cursor.close();
+        }
+        db.close();
+        return id;
+    }
+
+    public boolean exist(String nome){
+        String selectQuery = "SELECT " + NOME + " FROM " + TABLE + "WHERE " + NOME + " = " + nome;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        boolean exists = false;
+
+        try {
+            if (cursor.getCount()!= 0)
+                exists = true;
+
+        }finally{
+            cursor.close();
+        }
+        db.close();
+        return exists;
+    }
 
 }

@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button returnMap;
     Button addNewRegister;
+    Button addNewEmp;
 
     Spinner filterSpinner;
 
@@ -47,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
         returnMap = (Button) findViewById(R.id.returnToMapButton);
         addNewRegister = (Button) findViewById(R.id.addNewRegisterButton);
+        addNewEmp = (Button) findViewById(R.id.addNewEmpButton);
 
         filterSpinner = (Spinner) findViewById(R.id.filterRegistersSpinner);
 
@@ -64,6 +66,19 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, addNewRegisterActivity.class);
                 intent.putExtra("isNew", "true");
+                intent.putExtra("tipo", "fisica");
+                intent.putExtra("nome", "");
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        addNewEmp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, addNewRegisterActivity.class);
+                intent.putExtra("isNew", "true");
+                intent.putExtra("tipo", "juridica");
                 intent.putExtra("nome", "");
                 startActivity(intent);
                 finish();
@@ -87,6 +102,10 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(MainActivity.this, addNewRegisterActivity.class);
                 intent.putExtra("isNew", "false");
+                if(dbProprietario.exist(adapterView.getItemAtPosition(i).toString()))
+                    intent.putExtra("tipo", "fisica");
+                else
+                    intent.putExtra("tipo", "juridica");
                 intent.putExtra("nome", adapterView.getItemAtPosition(i).toString());
                 startActivity(intent);
                 finish();

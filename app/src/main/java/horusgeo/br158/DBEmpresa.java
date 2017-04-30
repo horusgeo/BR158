@@ -143,6 +143,26 @@ public class DBEmpresa extends SQLiteOpenHelper {
         return registerList;
     }
 
+    public Integer getName2ID(String nome){
+        String selectQuery = "SELECT " + ID + " FROM " + TABLE + "WHERE " + NOME + " = " + nome;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        Integer id = 0;
+
+        try {
+            if (cursor.moveToFirst())
+                id = cursor.getInt(0);
+        }finally{
+            cursor.close();
+        }
+        db.close();
+        return id;
+    }
+
+
 
 }
 
