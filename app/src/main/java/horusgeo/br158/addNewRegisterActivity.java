@@ -143,7 +143,6 @@ public class addNewRegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 saveAndReturn();
 
-
             }
         });
 
