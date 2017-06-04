@@ -65,6 +65,8 @@ public class RegisterActivity extends AppCompatActivity {
     DBEndObj dbEndObj;
     DBRoteiroAcesso dbRoteiroAcesso;
 
+    Boolean newRegister = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -124,6 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
         dbRoteiroAcesso = new DBRoteiroAcesso(this, null, null, 1);
 
         if(isNew.equals("false")){
+            newRegister = false;
             prop = dbProprietario.getProp(Integer.parseInt(id));
             conj = dbConjuge.getConj(Integer.parseInt(id));
             endRes = dbEndPerson.getEndPerson(Integer.parseInt(id));
@@ -131,6 +134,65 @@ public class RegisterActivity extends AppCompatActivity {
             roteiro = dbRoteiroAcesso.getRoteiro(Integer.parseInt(id));
         }
 
+
+    }
+
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        if(!newRegister){
+
+            nomePropText.setText(prop.getNome());
+            nacioPropText.setText(prop.getNacionalidade());
+            profPropText.setText(prop.getProfissao());
+            idPropText.setText(prop.getDocId());
+            tipoPropText.setText(prop.getDocTipo());
+            cpfPropText.setText(prop.getCpf());
+            emailPropText.setText(prop.getEmail());
+            tel1PropText.setText(prop.getTel1());
+            tel2PropText.setText(prop.getTel2());
+
+            nomeConjText.setText(conj.getNome());
+            nacioConjText.setText(conj.getNacionalidade());
+            profConjText.setText(conj.getProfissao());
+            idConjText.setText(conj.getDocId());
+            tipoConjText.setText(conj.getDocTipo());
+            cpfConjText.setText(conj.getCpf());
+            tel1ConjText.setText(conj.getTel1());
+
+            ruaResText.setText(endRes.getRua());
+            numResText.setText(endRes.getNum());
+            complResText.setText(endRes.getCompl());
+            bairroResText.setText(endRes.getBairro());
+            cepResText.setText(endRes.getCep());
+            munResText.setText(endRes.getMunicipio());
+            ufResText.setText(endRes.getUf1());
+            comResText.setText(endRes.getComarca());
+            ufComResText.setText(endRes.getUf2());
+            pRefResText.setText(endRes.getpRef());
+
+            ruaObjText.setText(endObj.getRua());
+            numObjText.setText(endObj.getNum());
+            complObjText.setText(endObj.getCompl());
+            bairroObjText.setText(endObj.getBairro());
+            cepObjText.setText(endObj.getCep());
+            pRefObjText.setText(endObj.getpRef());
+
+            roteiroFisicaText.setText(roteiro.getRoteiro());
+
+            ArrayAdapter spinnerAdapter = (ArrayAdapter) spinnerEstadoCivil.getAdapter();
+
+            spinnerEstadoCivil.setSelection(spinnerAdapter.getPosition(prop.getEstadoCivil()));
+
+            Boolean propPoss = false;
+            if(prop.getPossProp().equals("true"))
+                propPoss = true;
+
+            switchPropPoss.setSelected(propPoss);
+
+        }
 
     }
 
