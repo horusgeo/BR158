@@ -1341,6 +1341,32 @@
             android:textAlignment="textStart"
             android:gravity="start"/>
 
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/juridicoAddButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:fabSize="mini"
+            app:srcCompat="@android:drawable/ic_input_add"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginEnd="2dp"
+            android:layout_marginRight="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/juridicoCancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:fabSize="mini"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
     </android.support.constraint.ConstraintLayout>
 
 </ScrollView>
