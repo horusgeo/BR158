@@ -10,6 +10,7 @@ public class Plantacoes {
     private String tipo;
     private String idade;
     private String compl;
+    private String obs;
 
     Plantacoes(){}
 
@@ -44,5 +45,13 @@ public class Plantacoes {
 
     public void setCompl(String compl) {
         this.compl = compl;
+    }
+
+    public String getObs() {
+        return obs;
+    }
+
+    public void setObs(String obs) {
+        this.obs = obs;
     }
 }

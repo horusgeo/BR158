@@ -13,11 +13,11 @@ public class DBPlantacoes extends SQLiteOpenHelper{
 
     private static final String TABLE = "plantacoes";
 
-    private static final String _ID = "_id";
     private static final String ID = "id";
     private static final String TIPO = "tipo";
     private static final String IDADE = "idade";
     private static final String COMPLEMENTO = "complemento";
+    private static final String OBS = "observacao";
 
     public DBPlantacoes(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
@@ -26,11 +26,11 @@ public class DBPlantacoes extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_PROP_TABLE = "CREATE TABLE " + TABLE + "(" +
-                _ID + " INTEGER PRIMARY KEY," +
-                ID + " INTEGER," +
+                ID + "INTEGER NOT NULL UNIQUE," +
                 TIPO + " TEXT," +
                 IDADE + " TEXT," +
-                COMPLEMENTO + " TEXT" +
+                COMPLEMENTO + " TEXT," +
+                OBS + " TEXT" +
                 ")";
         db.execSQL(CREATE_PROP_TABLE);
     }
@@ -49,6 +49,7 @@ public class DBPlantacoes extends SQLiteOpenHelper{
         values.put(TIPO, cadastro.getTipo());
         values.put(IDADE, cadastro.getIdade());
         values.put(COMPLEMENTO, cadastro.getCompl());
+        values.put(OBS, cadastro.getObs());
         
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -95,6 +96,7 @@ public class DBPlantacoes extends SQLiteOpenHelper{
                 plantacoes.setTipo(cursor.getString(2));
                 plantacoes.setIdade(cursor.getString(3));
                 plantacoes.setCompl(cursor.getString(4));
+                plantacoes.setObs(cursor.getString(5));
 
 
             }

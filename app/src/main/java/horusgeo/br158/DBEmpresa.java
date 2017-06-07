@@ -162,6 +162,32 @@ public class DBEmpresa extends SQLiteOpenHelper {
         return id;
     }
 
+    public Integer getNewId(){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT " + ID + " FROM " + TABLE;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        Integer id = 0;
+        try {
+            if (cursor.getCount() > 0) {
+                cursor.moveToLast();
+                id = cursor.getInt(0) + 1;
+            } else {
+                id = 190000;
+            }
+        }finally{
+            cursor.close();
+        }
+
+        db.close();
+
+        return id;
+
+    }
+
 
 
 }

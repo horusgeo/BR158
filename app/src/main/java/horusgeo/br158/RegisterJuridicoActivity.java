@@ -5,8 +5,10 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
+
 
 public class RegisterJuridicoActivity extends AppCompatActivity {
 
@@ -118,6 +120,8 @@ public class RegisterJuridicoActivity extends AppCompatActivity {
         bairroObjJurText = (EditText) findViewById(R.id.bairroObjJurText);
         cepObjJurText = (EditText) findViewById(R.id.cepObjJurText);
 
+        roteiroJuridicoText = (EditText) findViewById(R.id.roteiroJuridicoText);
+
         Intent intent = getIntent();
 
         final String isNew = intent.getStringExtra("isNew");
@@ -144,6 +148,7 @@ public class RegisterJuridicoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 saveRegister();
+                onBackPressed();
             }
         });
 
@@ -175,33 +180,39 @@ public class RegisterJuridicoActivity extends AppCompatActivity {
             profRepLegalText.setText(repLegal.getProfissao());
             idRepLegalText.setText(repLegal.getDocId());
             tipoRepLegalText.setText(repLegal.getDocTipo());
-            cpfRepLegalText.setText();
-            emailRepLegalText.setText();
-            tel1RepLegalText.setText();
+            cpfRepLegalText.setText(repLegal.getCpf());
+            emailRepLegalText.setText(repLegal.getEmail());
+            tel1RepLegalText.setText(repLegal.getTel1());
 
-            ruaEmpText.setText();
-            numEmpText.setText();
-            complEmpText.setText();
-            bairroEmpText.setText();
-            cepEmpText.setText();
-            munEmpText.setText();
-            ufEmpText.setText();
-            pRefEmpText.setText();
+            ruaEmpText.setText(endEmp.getRua());
+            numEmpText.setText(endEmp.getNum());
+            complEmpText.setText(endEmp.getCompl());
+            bairroEmpText.setText(endEmp.getBairro());
+            cepEmpText.setText(endEmp.getCep());
+            munEmpText.setText(endEmp.getMunicipio());
+            ufEmpText.setText(endEmp.getUf1());
+            pRefEmpText.setText(endEmp.getpRef());
 
-            ruaRepLegalText.setText();
-            numRepLegalText.setText();
-            complRepLegalText.setText();
-            bairroRepLegalText.setText();
-            cepRepLegalText.setText();
-            munRepLegalText.setText();
-            ufRepLegalText.setText();
+            ruaRepLegalText.setText(endRepLegal.getRua());
+            numRepLegalText.setText(endRepLegal.getNum());
+            complRepLegalText.setText(endRepLegal.getCompl());
+            bairroRepLegalText.setText(endRepLegal.getBairro());
+            cepRepLegalText.setText(endRepLegal.getCep());
+            munRepLegalText.setText(endRepLegal.getMunicipio());
+            ufRepLegalText.setText(endRepLegal.getUf1());
 
-            ruaObjJurText.setText();
-            numObjJurText.setText();
-            complObjJurText.setText();
-            bairroObjJurText.setText();
-            cepObjJurText.setText();
-            pRefObjJurText.setText();
+            ruaObjJurText.setText(endObj.getRua());
+            numObjJurText.setText(endObj.getNum());
+            complObjJurText.setText(endObj.getCompl());
+            bairroObjJurText.setText(endObj.getBairro());
+            cepObjJurText.setText(endObj.getCep());
+            pRefObjJurText.setText(endObj.getpRef());
+
+            roteiroJuridicoText.setText(roteiro.getRoteiro());
+
+            ArrayAdapter spinnerAdapter = (ArrayAdapter) spinnerEstadoCivilRepLegal.getAdapter();
+
+            spinnerEstadoCivilRepLegal.setSelection(spinnerAdapter.getPosition(repLegal.getEstadoCivil()));
 
         }
 
@@ -215,6 +226,73 @@ public class RegisterJuridicoActivity extends AppCompatActivity {
     }
 
     public void saveRegister() {
+
+        if(nomeEmpText.getText().length() > 0){
+
+            Integer id = dbEmpresa.getNewId();
+
+            emp.setNome(nomeEmpText.getText().toString());
+            emp.setCnpj(cnpjEmpText.getText().toString());
+            emp.setContato(contatoEmpText.getText().toString());
+            emp.setEmail(emailEmpText.getText().toString());
+            emp.setTel1(tel1EmpText.getText().toString());
+            emp.setTel2(tel2EmpText.getText().toString());
+            emp.setId(id);
+
+            repLegal.setNome(nomeRepLegalText.getText().toString());
+            repLegal.setNacionalidade(nacioRepLegalText.getText().toString());
+            repLegal.setProfissao(profRepLegalText.getText().toString());
+            repLegal.setDocId(idRepLegalText.getText().toString());
+            repLegal.setDocTipo(tipoRepLegalText.getText().toString());
+            repLegal.setCpf(cpfRepLegalText.getText().toString());
+            repLegal.setEmail(emailRepLegalText.getText().toString());
+            repLegal.setTel1(tel1RepLegalText.getText().toString());
+            repLegal.setId(id);
+            repLegal.setEstadoCivil(spinnerEstadoCivilRepLegal.getSelectedItem().toString());
+
+            endEmp.setRua(ruaEmpText.getText().toString());
+            endEmp.setNum(numEmpText.getText().toString());
+            endEmp.setCompl(complEmpText.getText().toString());
+            endEmp.setBairro(bairroEmpText.getText().toString());
+            endEmp.setCep(cepEmpText.getText().toString());
+            endEmp.setMunicipio(munEmpText.getText().toString());
+            endEmp.setUf1(ufEmpText.getText().toString());
+            endEmp.setpRef(pRefEmpText.getText().toString());
+            endEmp.setId(id);
+
+            endRepLegal.setRua(ruaRepLegalText.getText().toString());
+            endRepLegal.setNum(numRepLegalText.getText().toString());
+            endRepLegal.setCompl(complRepLegalText.getText().toString());
+            endRepLegal.setBairro(bairroRepLegalText.getText().toString());
+            endRepLegal.setCep(cepRepLegalText.getText().toString());
+            endRepLegal.setMunicipio(munRepLegalText.getText().toString());
+            endRepLegal.setUf1(ufRepLegalText.getText().toString());
+            endRepLegal.setId(id);
+
+            endObj.setRua(ruaObjJurText.getText().toString());
+            endObj.setNum(numObjJurText.getText().toString());
+            endObj.setCompl(complObjJurText.getText().toString());
+            endObj.setBairro(bairroObjJurText.getText().toString());
+            endObj.setCep(cepObjJurText.getText().toString());
+            endObj.setpRef(pRefObjJurText.getText().toString());
+            endObj.setId(id);
+
+            roteiro.setRoteiro(roteiroJuridicoText.getText().toString());
+            roteiro.setId(id);
+
+            dbEmpresa.addEmpresa(emp);
+            dbJuridico.addJur(repLegal);
+            dbEndEmpresa.addEndEmpresa(endEmp);
+            dbEndPerson.addEndPerson(endRepLegal);
+            dbEndObj.addEndObj(endObj);
+            dbRoteiroAcesso.addRoteiro(roteiro);
+
+        } else {
+            nomeEmpText.setError(getString(R.string.empty_text));
+            nomeEmpText.requestFocus();
+        }
+
+
 
 
     }

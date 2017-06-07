@@ -759,40 +759,16 @@
             app:srcCompat="@drawable/bar" />
 
         <TextView
-            android:id="@+id/textView100"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="18dp"
-            android:text="Escolha a plantação:"
-            android:textSize="18sp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView33" />
-
-        <Spinner
-            android:id="@+id/spinnerPlantacao"
-            android:layout_width="0dp"
-            android:layout_height="38dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="24dp"
-            app:layout_constraintLeft_toRightOf="@id/textView100"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textView100" />
-
-        <TextView
             android:id="@+id/textView101"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="8dp"
             android:text="Tipo (pes, m² ou ha):"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView100" />
+            app:layout_constraintTop_toBottomOf="@id/imageView33" />
 
         <EditText
             android:id="@+id/tipoPlantacaoText"
@@ -800,16 +776,17 @@
             android:layout_height="38dp"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="7dp"
             android:layout_marginStart="8dp"
             android:hint="Tipo"
             android:inputType="textPersonName"
             android:minLines="1"
             android:textAlignment="center"
             android:textSize="16sp"
-            app:layout_constraintLeft_toRightOf="@id/textView101"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textView101" />
+            app:layout_constraintTop_toBottomOf="@id/textView101"
+            android:layout_marginTop="4dp"
+            app:layout_constraintLeft_toLeftOf="parent" />
 
         <TextView
             android:id="@+id/textView102"
@@ -817,11 +794,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="4dp"
             android:text="Idade:"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView101" />
+            app:layout_constraintTop_toBottomOf="@id/tipoPlantacaoText" />
 
         <EditText
             android:id="@+id/idadePlantacaoText"
@@ -836,9 +813,10 @@
             android:minLines="1"
             android:textAlignment="center"
             android:textSize="16sp"
-            app:layout_constraintLeft_toRightOf="@id/textView102"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textView102" />
+            app:layout_constraintTop_toBottomOf="@id/textView102"
+            android:layout_marginTop="4dp" />
 
         <TextView
             android:id="@+id/textView103"
@@ -846,11 +824,11 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="4dp"
             android:text="Complemento:"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView102" />
+            app:layout_constraintTop_toBottomOf="@id/idadePlantacaoText" />
 
         <EditText
             android:id="@+id/complPlantacaoText"
@@ -865,20 +843,10 @@
             android:minLines="1"
             android:textAlignment="center"
             android:textSize="16sp"
-            app:layout_constraintLeft_toRightOf="@id/textView103"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="@id/textView103" />
-
-        <Button
-            android:id="@+id/savePlantacaoButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Salvar Plantação"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView103"
-            app:layout_constraintHorizontal_bias="0.502" />
+            android:layout_marginTop="4dp"/>
 
         <TextView
             android:id="@+id/textView104"
@@ -890,7 +858,7 @@
             android:text="Observações:"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/savePlantacaoButton" />
+            app:layout_constraintTop_toBottomOf="@id/complPlantacaoText" />
 
         <EditText
             android:id="@+id/obsInfoPropText"
@@ -910,28 +878,31 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView104" />
 
-        <ImageView
-            android:id="@+id/imageView41"
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/infoPropAddButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:clickable="true"
+            app:fabSize="mini"
+            app:srcCompat="@android:drawable/ic_input_add"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/obsInfoPropText"
-            app:srcCompat="@drawable/bar" />
+            android:layout_marginEnd="2dp"
+            android:layout_marginRight="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
-        <Button
-            android:id="@+id/saveInfoPropButton"
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/infoPropCancelButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Salvar"
+            android:clickable="true"
+            app:fabSize="mini"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView41" />
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
 
     </android.support.constraint.ConstraintLayout>

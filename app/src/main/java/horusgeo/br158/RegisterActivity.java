@@ -146,6 +146,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 saveRegister();
+                onBackPressed();
             }
         });
 
@@ -227,65 +228,69 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void saveRegister(){
 
-        String str2Id = nomePropText.getText().toString();
+        if(nomePropText.getText().length() > 0) {
 
-        Integer id = str2Id.hashCode();
+            Integer id = dbProprietario.getNewId();
 
-        prop.setNome(nomePropText.getText().toString());
-        prop.setNacionalidade(nacioPropText.getText().toString());
-        prop.setProfissao(profPropText.getText().toString());
-        prop.setDocId(idPropText.getText().toString());
-        prop.setDocTipo(tipoPropText.getText().toString());
-        prop.setCpf(cpfPropText.getText().toString());
-        prop.setEmail(emailPropText.getText().toString());
-        prop.setTel1(tel1PropText.getText().toString());
-        prop.setTel2(tel2PropText.getText().toString());
-        prop.setId(id);
+            prop.setNome(nomePropText.getText().toString());
+            prop.setNacionalidade(nacioPropText.getText().toString());
+            prop.setProfissao(profPropText.getText().toString());
+            prop.setDocId(idPropText.getText().toString());
+            prop.setDocTipo(tipoPropText.getText().toString());
+            prop.setCpf(cpfPropText.getText().toString());
+            prop.setEmail(emailPropText.getText().toString());
+            prop.setTel1(tel1PropText.getText().toString());
+            prop.setTel2(tel2PropText.getText().toString());
+            prop.setId(id);
 
-        conj.setNome(nomeConjText.getText().toString());
-        conj.setNacionalidade(nacioConjText.getText().toString());
-        conj.setProfissao(profConjText.getText().toString());
-        conj.setDocId(idConjText.getText().toString());
-        conj.setDocTipo(tipoConjText.getText().toString());
-        conj.setCpf(cpfConjText.getText().toString());
-        conj.setTel1(tel1ConjText.getText().toString());
-        conj.setId(id);
+            conj.setNome(nomeConjText.getText().toString());
+            conj.setNacionalidade(nacioConjText.getText().toString());
+            conj.setProfissao(profConjText.getText().toString());
+            conj.setDocId(idConjText.getText().toString());
+            conj.setDocTipo(tipoConjText.getText().toString());
+            conj.setCpf(cpfConjText.getText().toString());
+            conj.setTel1(tel1ConjText.getText().toString());
+            conj.setId(id);
 
-        endRes.setRua(ruaResText.getText().toString());
-        endRes.setNum(numResText.getText().toString());
-        endRes.setCompl(complResText.getText().toString());
-        endRes.setBairro(bairroResText.getText().toString());
-        endRes.setCep(cepResText.getText().toString());
-        endRes.setMunicipio(munResText.getText().toString());
-        endRes.setUf1(ufResText.getText().toString());
-        endRes.setComarca(comResText.getText().toString());
-        endRes.setUf2(ufComResText.getText().toString());
-        endRes.setpRef(pRefResText.getText().toString());
-        endRes.setId(id);
+            endRes.setRua(ruaResText.getText().toString());
+            endRes.setNum(numResText.getText().toString());
+            endRes.setCompl(complResText.getText().toString());
+            endRes.setBairro(bairroResText.getText().toString());
+            endRes.setCep(cepResText.getText().toString());
+            endRes.setMunicipio(munResText.getText().toString());
+            endRes.setUf1(ufResText.getText().toString());
+            endRes.setComarca(comResText.getText().toString());
+            endRes.setUf2(ufComResText.getText().toString());
+            endRes.setpRef(pRefResText.getText().toString());
+            endRes.setId(id);
 
-        endObj.setRua(ruaObjText.getText().toString());
-        endObj.setNum(numObjText.getText().toString());
-        endObj.setCompl(complObjText.getText().toString());
-        endObj.setBairro(bairroObjText.getText().toString());
-        endObj.setCep(cepObjText.getText().toString());
-        endObj.setpRef(pRefObjText.getText().toString());
-        endObj.setId(id);
+            endObj.setRua(ruaObjText.getText().toString());
+            endObj.setNum(numObjText.getText().toString());
+            endObj.setCompl(complObjText.getText().toString());
+            endObj.setBairro(bairroObjText.getText().toString());
+            endObj.setCep(cepObjText.getText().toString());
+            endObj.setpRef(pRefObjText.getText().toString());
+            endObj.setId(id);
 
-        roteiro.setRoteiro(roteiroFisicaText.getText().toString());
-        roteiro.setId(id);
+            roteiro.setRoteiro(roteiroFisicaText.getText().toString());
+            roteiro.setId(id);
 
-        prop.setEstadoCivil(spinnerEstadoCivil.getSelectedItem().toString());
+            prop.setEstadoCivil(spinnerEstadoCivil.getSelectedItem().toString());
 
-        prop.setPossProp("false");
-        if(switchPropPoss.isChecked())
-            prop.setPossProp("true");
+            prop.setPossProp("false");
+            if (switchPropPoss.isChecked())
+                prop.setPossProp("true");
 
 
-        dbProprietario.addProp(prop);
-        dbConjuge.addConj(conj);
-        dbEndPerson.addEndPerson(endRes);
-        dbEndObj.addEndObj(endObj);
-        dbRoteiroAcesso.addRoteiro(roteiro);
+            dbProprietario.addProp(prop);
+            dbConjuge.addConj(conj);
+            dbEndPerson.addEndPerson(endRes);
+            dbEndObj.addEndObj(endObj);
+            dbRoteiroAcesso.addRoteiro(roteiro);
+        } else {
+            nomePropText.setError(getString(R.string.empty_text));
+            nomePropText.requestFocus();
+        }
     }
 
 }

@@ -52,4 +52,6 @@
         <item>Rural</item>
     </string-array>
 
+    <string name="empty_text">Defina um nome para a empresa</string>
+
 </resources>
