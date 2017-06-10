@@ -1,6 +1,7 @@
 package horusgeo.br158;
 
 import android.content.Intent;
+import android.support.annotation.IntegerRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -68,6 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
     DBRoteiroAcesso dbRoteiroAcesso;
 
     Boolean newRegister = true;
+    Integer newID = 0;
 
     FloatingActionButton addRegister;
     FloatingActionButton cancelRegister;
@@ -126,6 +128,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         final String isNew = intent.getStringExtra("isNew");
         final String id = intent.getStringExtra("id");
+
+        newID = Integer.parseInt(id);
 
         dbProprietario = new DBProprietario(this, null, null, 1);
         dbConjuge = new DBConjuge(this, null, null, 1);
@@ -230,7 +234,9 @@ public class RegisterActivity extends AppCompatActivity {
 
         if(nomePropText.getText().length() > 0) {
 
-            Integer id = dbProprietario.getNewId();
+            Integer id = newID;
+            if(newRegister)
+                id = dbProprietario.getNewId();
 
             prop.setNome(nomePropText.getText().toString());
             prop.setNacionalidade(nacioPropText.getText().toString());
@@ -280,6 +286,8 @@ public class RegisterActivity extends AppCompatActivity {
             prop.setPossProp("false");
             if (switchPropPoss.isChecked())
                 prop.setPossProp("true");
+
+
 
 
             dbProprietario.addProp(prop);

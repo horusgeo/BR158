@@ -32,9 +32,9 @@ public class DBPropriedade extends SQLiteOpenHelper {
                 ID + " INTEGER NOT NULL UNIQUE," +
                 ZONEAMENTO + " TEXT," +
                 TOPOGRAFIA + " TEXT," +
-                INFRAREDEEL + " INTEGER," +
-                INFRASINTEL + " INTEGER," +
-                INFRAABASAGUA + " INTEGER," +
+                INFRAREDEEL + " TEXT," +
+                INFRASINTEL + " TEXT," +
+                INFRAABASAGUA + " TEXT," +
                 MANANCIAL + " TEXT," +
                 SITUACAO + " TEXT" +
                 ")";
@@ -103,9 +103,9 @@ public class DBPropriedade extends SQLiteOpenHelper {
                 propriedade.setId(cursor.getInt(0));
                 propriedade.setZoneamento(cursor.getString(1));
                 propriedade.setTopografia(cursor.getString(2));
-                propriedade.setSinalTelefone(cursor.getInt(3));
-                propriedade.setRedeEletrica(cursor.getInt(4));
-                propriedade.setAbastecimentoAgua(cursor.getInt(5));
+                propriedade.setSinalTelefone(cursor.getString(3));
+                propriedade.setRedeEletrica(cursor.getString(4));
+                propriedade.setAbastecimentoAgua(cursor.getString(5));
                 propriedade.setManancial(cursor.getString(6));
                 propriedade.setSituacao(cursor.getString(7));
             }

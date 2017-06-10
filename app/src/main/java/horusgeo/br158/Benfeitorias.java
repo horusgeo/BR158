@@ -4,9 +4,9 @@ public class Benfeitorias {
 
     private Integer id;
 
-    private Integer construcoes;
-    private Integer equipamentos;
-    private Integer croquis;
+    private String construcoes;
+    private String equipamentos;
+    private String croquis;
 
     private String constucoesText;
     private String equipamentosText;
@@ -18,27 +18,27 @@ public class Benfeitorias {
 
     }
 
-    public Integer getConstrucoes() {
+    public String getConstrucoes() {
         return construcoes;
     }
 
-    public void setConstrucoes(Integer construcoes) {
+    public void setConstrucoes(String construcoes) {
         this.construcoes = construcoes;
     }
 
-    public Integer getEquipamentos() {
+    public String getEquipamentos() {
         return equipamentos;
     }
 
-    public void setEquipamentos(Integer equipamentos) {
+    public void setEquipamentos(String equipamentos) {
         this.equipamentos = equipamentos;
     }
 
-    public Integer getCroquis() {
+    public String getCroquis() {
         return croquis;
     }
 
-    public void setCroquis(Integer croquis) {
+    public void setCroquis(String croquis) {
         this.croquis = croquis;
     }
 

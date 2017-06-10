@@ -1,86 +1,140 @@
 package horusgeo.br158;
 
-import android.app.DatePickerDialog;
-
-import android.app.TimePickerDialog;
-import android.media.Image;
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.DateFormat;
 import android.view.View;
-import android.widget.DatePicker;
-import android.widget.ImageButton;
-import android.widget.TimePicker;
+import android.widget.EditText;
 
-import java.util.Calendar;
+public class RelatorioActivity extends AppCompatActivity{
 
-public class RelatorioActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener  {
+    EditText data1;
+    EditText data2;
+    EditText data3;
 
-    ImageButton dataRelatorioButtom;
-    ImageButton horarioChegadaRelatorioButtom;
-    ImageButton horarioSaidaRelatorioButtom;
+    EditText horarioChegada;
+    EditText horarioSaida;
+    EditText horario2;
+    EditText horario3;
 
-    Calendar dataCalendar = Calendar.getInstance();
-    Calendar horarioChegadaCalendar = Calendar.getInstance();
-    Calendar horarioSaidaCalendar = Calendar.getInstance();
+    EditText descricao1;
+    EditText descricao2;
+    EditText descricao3;
 
+    EditText responsavel;
 
+    Relatorio relatorio;
+
+    DBRelatorio dbrelatorio;
+
+    Boolean newRegister = true;
+    Integer newID = 0;
+
+    FloatingActionButton addRelatorio;
+    FloatingActionButton cancelRelatorio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_relatorio);
 
-        dataRelatorioButtom = (ImageButton) findViewById(R.id.dataRelatorioButton);
-        horarioChegadaRelatorioButtom = (ImageButton) findViewById(R.id.horarioChegadaRelatorioButton);
-        horarioSaidaRelatorioButtom = (ImageButton) findViewById(R.id.horarioSaidaRelatorioButton);
+        data1 = (EditText) findViewById(R.id.dataRelatorioText);
+        data2 = (EditText) findViewById(R.id.data2RelatorioText);
+        data3 = (EditText) findViewById(R.id.data3RelatorioText);
 
-        dataRelatorioButtom.setOnClickListener(new View.OnClickListener() {
+        horarioChegada = (EditText) findViewById(R.id.horarioChegadaRelatorioText);
+        horarioSaida = (EditText) findViewById(R.id.horarioSaidaRelatorioText);
+        horario2 = (EditText) findViewById(R.id.horario2RelatorioText);
+        horario3 = (EditText) findViewById(R.id.horario3RelatorioText);
+
+        descricao1 = (EditText) findViewById(R.id.descricaoRelatorioText);
+        descricao2 = (EditText) findViewById(R.id.descricao2RelatorioText);
+        descricao3 = (EditText) findViewById(R.id.descricao3RelatorioText);
+
+        responsavel = (EditText) findViewById(R.id.responsavelRelatorioText);
+
+        Intent intent = getIntent();
+
+        final String isNew = intent.getStringExtra("isNew");
+        final String id = intent.getStringExtra("id");
+
+        newID = Integer.parseInt(id);
+
+        dbrelatorio = new DBRelatorio(this, null, null, 1);
+
+        if (isNew.equals("false")) {
+            newRegister = false;
+            relatorio = dbrelatorio.getRelatorio(Integer.parseInt(id));
+        }
+
+        addRelatorio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                new DatePickerDialog(RelatorioActivity.this, null, dataCalendar.get(Calendar.YEAR),
-                        dataCalendar.get(Calendar.MONTH),
-                        dataCalendar.get(Calendar.DAY_OF_MONTH))
-                        .show();
-
+                saveRegister();
+                onBackPressed();
             }
         });
 
-        horarioChegadaRelatorioButtom.setOnClickListener(new View.OnClickListener() {
+        cancelRelatorio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new TimePickerDialog(RelatorioActivity.this, null, horarioChegadaCalendar.get(Calendar.HOUR_OF_DAY),
-                        horarioChegadaCalendar.get(Calendar.MINUTE), true)
-                        .show();
-            }
-        });
-
-        horarioSaidaRelatorioButtom.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new TimePickerDialog(RelatorioActivity.this, null, horarioSaidaCalendar.get(Calendar.HOUR_OF_DAY),
-                        horarioSaidaCalendar.get(Calendar.MINUTE), true)
-                        .show();
+                onBackPressed();
             }
         });
 
 
     }
+
 
     @Override
-    public void onDateSet(DatePicker view, int year, int monthOfYear,
-                          int dayOfMonth) {
-        // TODO Auto-generated method stub
-        dataCalendar.set(Calendar.YEAR, year);
-        dataCalendar.set(Calendar.MONTH, monthOfYear);
-        dataCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+    public void onBackPressed() {
+        Intent intent = new Intent(RelatorioActivity.this, addNewRegisterActivity.class);
+        startActivity(intent);
+        finish();
     }
 
+
     @Override
-    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        // Do something with the time chosen by the user
+    protected void onResume() {
+        super.onResume();
+
+        if (!newRegister) {
+            data1.setText(relatorio.getData1());
+            data2.setText(relatorio.getData2());
+            data3.setText(relatorio.getData3());
+            horarioChegada.setText(relatorio.getHorarioChegada());
+            horarioSaida.setText(relatorio.getHorarioSaida());
+            horario2.setText(relatorio.getHorario2());
+            horario3.setText(relatorio.getHorario3());
+            descricao1.setText(relatorio.getDescricao1());
+            descricao2.setText(relatorio.getDescricao2());
+            descricao3.setText(relatorio.getDescricao3());
+            responsavel.setText(relatorio.getResponsavel());
+
+
+        }
+
     }
+
+    public void saveRegister() {
+        if (newID != 0) {
+            relatorio.setId(newID);
+            relatorio.setData1(data1.getText().toString());
+            relatorio.setData2(data2.getText().toString());
+            relatorio.setData3(data3.getText().toString());
+            relatorio.setHorarioChegada(horarioChegada.getText().toString());
+            relatorio.setHorarioSaida(horarioSaida.getText().toString());
+            relatorio.setHorario2(horario2.getText().toString());
+            relatorio.setHorario3(horario3.getText().toString());
+            relatorio.setDescricao1(descricao1.getText().toString());
+            relatorio.setDescricao2(descricao2.getText().toString());
+            relatorio.setDescricao3(descricao3.getText().toString());
+            relatorio.setResponsavel(responsavel.getText().toString());
+        }
+
+    }
+
 
 
 

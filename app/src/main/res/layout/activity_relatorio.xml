@@ -80,7 +80,7 @@
             android:layout_marginStart="8dp"
             app:layout_constraintLeft_toRightOf="@id/textView106"
             android:layout_marginLeft="8dp"
-            app:layout_constraintRight_toLeftOf="@+id/dataRelatorioButton"
+            app:layout_constraintRight_toRightOf="parent"
             android:layout_marginRight="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintTop_toTopOf="@id/textView106"
@@ -92,16 +92,7 @@
             android:focusable="false"
             />
 
-        <ImageButton
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            app:srcCompat="@android:drawable/ic_menu_today"
-            android:id="@+id/dataRelatorioButton"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="8dp"
-            app:layout_constraintTop_toTopOf="@id/textView106"
-            />
+
 
         <TextView
             android:text="Horário de chegada:"
@@ -122,7 +113,7 @@
             android:layout_marginStart="8dp"
             app:layout_constraintLeft_toRightOf="@id/textView107"
             android:layout_marginLeft="8dp"
-            app:layout_constraintRight_toLeftOf="@+id/horarioChegadaRelatorioButton"
+            app:layout_constraintRight_toRightOf="parent"
             android:layout_marginRight="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintTop_toTopOf="@id/textView107"
@@ -134,15 +125,7 @@
             android:focusable="false"
             />
 
-        <ImageButton
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            app:srcCompat="@android:drawable/ic_menu_recent_history"
-            android:id="@+id/horarioChegadaRelatorioButton"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="8dp"
-            app:layout_constraintTop_toTopOf="@id/textView107"/>
+
 
         <TextView
             android:text="Horário de saída:"
@@ -164,7 +147,7 @@
             android:layout_marginStart="8dp"
             app:layout_constraintLeft_toRightOf="@id/textView108"
             android:layout_marginLeft="8dp"
-            app:layout_constraintRight_toLeftOf="@+id/horarioSaidaRelatorioButton"
+            app:layout_constraintRight_toRightOf="parent"
             android:layout_marginRight="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintTop_toTopOf="@id/textView108"
@@ -176,15 +159,7 @@
             android:focusable="false"
             />
 
-        <ImageButton
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            app:srcCompat="@android:drawable/ic_menu_recent_history"
-            android:id="@+id/horarioSaidaRelatorioButton"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="8dp"
-            app:layout_constraintTop_toTopOf="@id/textView108" />
+
 
         <EditText
             android:layout_width="0dp"
@@ -301,7 +276,7 @@
             android:layout_marginStart="8dp"
             app:layout_constraintLeft_toRightOf="@id/textView106"
             android:layout_marginLeft="8dp"
-            app:layout_constraintRight_toLeftOf="@+id/data2RelatorioButton"
+            app:layout_constraintRight_toRightOf="parent"
             android:layout_marginRight="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintTop_toTopOf="@id/textView111"
@@ -313,16 +288,7 @@
             android:focusable="false"
             />
 
-        <ImageButton
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            app:srcCompat="@android:drawable/ic_menu_today"
-            android:id="@+id/data2RelatorioButton"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="8dp"
-            app:layout_constraintTop_toTopOf="@id/textView111"
-            />
+
 
         <TextView
             android:text="Horário:"
@@ -341,9 +307,9 @@
             android:inputType="time"
             android:id="@+id/horario2RelatorioText"
             android:layout_marginStart="8dp"
-            app:layout_constraintLeft_toRightOf="@id/textView107"
+            app:layout_constraintLeft_toRightOf="@+id/textView112"
             android:layout_marginLeft="8dp"
-            app:layout_constraintRight_toLeftOf="@+id/horario2RelatorioButton"
+            app:layout_constraintRight_toRightOf="parent"
             android:layout_marginRight="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintTop_toTopOf="@id/textView112"
@@ -353,17 +319,10 @@
             android:layout_height="38dp"
             android:textSize="16sp"
             android:focusable="false"
-            />
+            android:layout_marginTop="0dp"
+            app:layout_constraintHorizontal_bias="0.0" />
 
-        <ImageButton
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            app:srcCompat="@android:drawable/ic_menu_recent_history"
-            android:id="@+id/horario2RelatorioButton"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="8dp"
-            app:layout_constraintTop_toTopOf="@id/textView112"/>
+
 
         <EditText
             android:layout_width="0dp"
@@ -450,7 +409,7 @@
             android:layout_marginStart="8dp"
             app:layout_constraintLeft_toRightOf="@id/textView114"
             android:layout_marginLeft="8dp"
-            app:layout_constraintRight_toLeftOf="@+id/data3RelatorioButton"
+            app:layout_constraintRight_toRightOf="parent"
             android:layout_marginRight="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintTop_toTopOf="@id/textView114"
@@ -462,16 +421,7 @@
             android:focusable="false"
             />
 
-        <ImageButton
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            app:srcCompat="@android:drawable/ic_menu_today"
-            android:id="@+id/data3RelatorioButton"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="8dp"
-            app:layout_constraintTop_toTopOf="@id/textView114"
-            />
+
 
         <TextView
             android:text="Horário:"
@@ -492,7 +442,7 @@
             android:layout_marginStart="8dp"
             app:layout_constraintLeft_toRightOf="@id/textView115"
             android:layout_marginLeft="8dp"
-            app:layout_constraintRight_toLeftOf="@+id/horario3RelatorioButton"
+            app:layout_constraintRight_toRightOf="parent"
             android:layout_marginRight="8dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintTop_toTopOf="@id/textView115"
@@ -504,15 +454,7 @@
             android:focusable="false"
             />
 
-        <ImageButton
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            app:srcCompat="@android:drawable/ic_menu_recent_history"
-            android:id="@+id/horario3RelatorioButton"
-            android:layout_marginEnd="8dp"
-            app:layout_constraintRight_toRightOf="parent"
-            android:layout_marginRight="8dp"
-            app:layout_constraintTop_toTopOf="@id/textView115"/>
+
 
         <EditText
             android:layout_width="0dp"
@@ -548,14 +490,31 @@
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginLeft="16dp" />
 
-        <Button
-            android:text="Salvar"
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/relatorioAddButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/saveRelatorioButton"
-            app:layout_constraintLeft_toLeftOf="parent"
+            android:clickable="true"
+            app:fabSize="mini"
+            app:srcCompat="@android:drawable/ic_input_add"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imageView40"/>
+            android:layout_marginEnd="2dp"
+            android:layout_marginRight="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/relatorioCancelButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:fabSize="mini"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

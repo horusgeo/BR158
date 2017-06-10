@@ -69,8 +69,8 @@ public class RegisterJuridicoActivity extends AppCompatActivity {
     DBRoteiroAcesso dbRoteiroAcesso;
     DBJuridico dbJuridico;
 
-
     Boolean newRegister = true;
+    Integer newID = 0;
 
     FloatingActionButton addJuridico;
     FloatingActionButton cancelJuridico;
@@ -122,10 +122,15 @@ public class RegisterJuridicoActivity extends AppCompatActivity {
 
         roteiroJuridicoText = (EditText) findViewById(R.id.roteiroJuridicoText);
 
+        addJuridico = (FloatingActionButton) findViewById(R.id.juridicoAddButton);
+        cancelJuridico = (FloatingActionButton) findViewById(R.id.juridicoCancelButton);
+
         Intent intent = getIntent();
 
         final String isNew = intent.getStringExtra("isNew");
         final String id = intent.getStringExtra("id");
+
+        newID = Integer.parseInt(id);
 
         dbEmpresa = new DBEmpresa(this, null, null, 1);
         dbJuridico = new DBJuridico(this, null, null, 1);
@@ -228,8 +233,9 @@ public class RegisterJuridicoActivity extends AppCompatActivity {
     public void saveRegister() {
 
         if(nomeEmpText.getText().length() > 0){
-
-            Integer id = dbEmpresa.getNewId();
+            Integer id = newID;
+            if(newRegister)
+                id = dbEmpresa.getNewId();
 
             emp.setNome(nomeEmpText.getText().toString());
             emp.setCnpj(cnpjEmpText.getText().toString());

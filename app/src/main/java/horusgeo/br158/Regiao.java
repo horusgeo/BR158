@@ -2,13 +2,13 @@ package horusgeo.br158;
 
 public class Regiao {
 
-    private Integer coletaLixo;
-    private Integer transporte;
-    private Integer saude;
-    private Integer escola;
-    private Integer comercio;
-    private Integer lazer;
-    private Integer seguranca;
+    private String coletaLixo;
+    private String transporte;
+    private String saude;
+    private String escola;
+    private String comercio;
+    private String lazer;
+    private String seguranca;
     private String uso;
     private Integer id;
 
@@ -16,59 +16,59 @@ public class Regiao {
 
     }
 
-    public Integer getColetaLixo() {
+    public String getColetaLixo() {
         return coletaLixo;
     }
 
-    public void setColetaLixo(Integer coletaLixo) {
+    public void setColetaLixo(String coletaLixo) {
         this.coletaLixo = coletaLixo;
     }
 
-    public Integer getTransporte() {
+    public String getTransporte() {
         return transporte;
     }
 
-    public void setTransporte(Integer transporte) {
+    public void setTransporte(String transporte) {
         this.transporte = transporte;
     }
 
-    public Integer getSaude() {
+    public String getSaude() {
         return saude;
     }
 
-    public void setSaude(Integer saude) {
+    public void setSaude(String saude) {
         this.saude = saude;
     }
 
-    public Integer getEscola() {
+    public String getEscola() {
         return escola;
     }
 
-    public void setEscola(Integer escola) {
+    public void setEscola(String escola) {
         this.escola = escola;
     }
 
-    public Integer getComercio() {
+    public String getComercio() {
         return comercio;
     }
 
-    public void setComercio(Integer comercio) {
+    public void setComercio(String comercio) {
         this.comercio = comercio;
     }
 
-    public Integer getLazer() {
+    public String getLazer() {
         return lazer;
     }
 
-    public void setLazer(Integer lazer) {
+    public void setLazer(String lazer) {
         this.lazer = lazer;
     }
 
-    public Integer getSeguranca() {
+    public String getSeguranca() {
         return seguranca;
     }
 
-    public void setSeguranca(Integer seguranca) {
+    public void setSeguranca(String seguranca) {
         this.seguranca = seguranca;
     }
 

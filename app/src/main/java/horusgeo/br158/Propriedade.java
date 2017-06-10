@@ -7,9 +7,9 @@ public class Propriedade {
     private String topografia;
     private String manancial;
     private String situacao;
-    private Integer redeEletrica;
-    private Integer sinalTelefone;
-    private Integer abastecimentoAgua;
+    private String redeEletrica;
+    private String sinalTelefone;
+    private String abastecimentoAgua;
     private Integer id;
 
     Propriedade(){
@@ -49,27 +49,27 @@ public class Propriedade {
         this.situacao = situacao;
     }
 
-    public Integer getRedeEletrica() {
+    public String getRedeEletrica() {
         return redeEletrica;
     }
 
-    public void setRedeEletrica(Integer redeEletrica) {
+    public void setRedeEletrica(String redeEletrica) {
         this.redeEletrica = redeEletrica;
     }
 
-    public Integer getSinalTelefone() {
+    public String getSinalTelefone() {
         return sinalTelefone;
     }
 
-    public void setSinalTelefone(Integer sinalTelefone) {
+    public void setSinalTelefone(String sinalTelefone) {
         this.sinalTelefone = sinalTelefone;
     }
 
-    public Integer getAbastecimentoAgua() {
+    public String getAbastecimentoAgua() {
         return abastecimentoAgua;
     }
 
-    public void setAbastecimentoAgua(Integer abastecimentoAgua) {
+    public void setAbastecimentoAgua(String abastecimentoAgua) {
         this.abastecimentoAgua = abastecimentoAgua;
     }
 

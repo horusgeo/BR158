@@ -141,7 +141,7 @@ public class addNewRegisterActivity extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveAndReturn();
+                onBackPressed();
 
             }
         });
@@ -150,12 +150,9 @@ public class addNewRegisterActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        saveAndReturn();
-    }
-
-    private void saveAndReturn(){
         Intent intent = new Intent(addNewRegisterActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
+
 }

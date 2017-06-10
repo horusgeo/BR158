@@ -31,13 +31,13 @@ public class DBRegiao extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_PROP_TABLE = "CREATE TABLE " + TABLE + "(" +
                 ID + " INTEGER NOT NULL UNIQUE," +
-                LIXO + " INTEGER," +
-                TRANSPORTE + " INTEGER," +
-                SAUDE + " INTEGER," +
-                ESCOLA + " INTEGER," +
-                COMERCIO + " INTEGER," +
-                LAZER + " INTEGER," +
-                SEGURANCA + " INTEGER," +
+                LIXO + " TEXT," +
+                TRANSPORTE + " TEXT," +
+                SAUDE + " TEXT," +
+                ESCOLA + " TEXT," +
+                COMERCIO + " TEXT," +
+                LAZER + " TEXT," +
+                SEGURANCA + " TEXT," +
                 USO + " TEXT" +
                 ")";
         db.execSQL(CREATE_PROP_TABLE);
@@ -104,13 +104,13 @@ public class DBRegiao extends SQLiteOpenHelper {
             if (cursor.moveToFirst()) {
                 cursor.moveToFirst();
                 regiao.setId(cursor.getInt(0));
-                regiao.setColetaLixo(cursor.getInt(1));
-                regiao.setTransporte(cursor.getInt(2));
-                regiao.setSaude(cursor.getInt(3));
-                regiao.setEscola(cursor.getInt(4));
-                regiao.setComercio(cursor.getInt(5));
-                regiao.setLazer(cursor.getInt(6));
-                regiao.setSeguranca(cursor.getInt(7));
+                regiao.setColetaLixo(cursor.getString(1));
+                regiao.setTransporte(cursor.getString(2));
+                regiao.setSaude(cursor.getString(3));
+                regiao.setEscola(cursor.getString(4));
+                regiao.setComercio(cursor.getString(5));
+                regiao.setLazer(cursor.getString(6));
+                regiao.setSeguranca(cursor.getString(7));
                 regiao.setUso(cursor.getString(8));
             }
         }finally{
