@@ -10,7 +10,7 @@ public class Roteiro {
     private String roteiro;
 
     Roteiro(){
-
+        this.roteiro = "";
     }
 
     public Integer getId() {

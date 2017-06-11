@@ -12,7 +12,14 @@ public class Plantacoes {
     private String compl;
     private String obs;
 
-    Plantacoes(){}
+    Plantacoes(){
+
+        this.tipo = "";
+        this.idade = "";
+        this.compl = "";
+        this.obs = "";
+
+    }
 
 
     public Integer getId() {

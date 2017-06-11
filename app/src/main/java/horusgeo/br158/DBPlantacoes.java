@@ -6,9 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DBPlantacoes extends SQLiteOpenHelper{
 
-    private static final String DATABASE_NAME = "br158.db";
+    private static final String DATABASE_NAME = "BR_158_plants.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String TABLE = "plantacoes";
@@ -26,7 +29,7 @@ public class DBPlantacoes extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_PROP_TABLE = "CREATE TABLE " + TABLE + "(" +
-                ID + "INTEGER NOT NULL UNIQUE," +
+                ID + " INTEGER NOT NULL UNIQUE," +
                 TIPO + " TEXT," +
                 IDADE + " TEXT," +
                 COMPLEMENTO + " TEXT," +
@@ -92,12 +95,11 @@ public class DBPlantacoes extends SQLiteOpenHelper{
         try{
             if (cursor.moveToFirst()) {
                 cursor.moveToFirst();
-                plantacoes.setId(cursor.getInt(1));
-                plantacoes.setTipo(cursor.getString(2));
-                plantacoes.setIdade(cursor.getString(3));
-                plantacoes.setCompl(cursor.getString(4));
-                plantacoes.setObs(cursor.getString(5));
-
+                plantacoes.setId(cursor.getInt(0));
+                plantacoes.setTipo(cursor.getString(1));
+                plantacoes.setIdade(cursor.getString(2));
+                plantacoes.setCompl(cursor.getString(3));
+                plantacoes.setObs(cursor.getString(4));
 
             }
         }finally{
@@ -108,6 +110,33 @@ public class DBPlantacoes extends SQLiteOpenHelper{
 
         return plantacoes;
 
+    }
+
+    public Map<String, String> getMap(Integer id){
+        Map<String, String> map = new HashMap<String, String>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * FROM " + TABLE + " WHERE " + ID + " = " + id;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        try{
+            if (cursor.moveToFirst()) {
+                cursor.moveToFirst();
+                map.put("Tipo_plant", cursor.getString(1));
+                map.put("Idade_plant", cursor.getString(2));
+                map.put("Compl_plant", cursor.getString(3));
+                map.put("Obs_plant", cursor.getString(4));
+
+            }
+        }finally{
+            cursor.close();
+        }
+
+        db.close();
+
+        return map;
     }
 
 

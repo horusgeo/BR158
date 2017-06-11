@@ -71,6 +71,7 @@ public class RegisterJuridicoActivity extends AppCompatActivity {
 
     Boolean newRegister = true;
     Integer newID = 0;
+    String tipoRegister;
 
     FloatingActionButton addJuridico;
     FloatingActionButton cancelJuridico;
@@ -128,6 +129,7 @@ public class RegisterJuridicoActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         final String isNew = intent.getStringExtra("isNew");
+        tipoRegister = intent.getStringExtra("tipo");
         final String id = intent.getStringExtra("id");
 
         newID = Integer.parseInt(id);
@@ -211,7 +213,7 @@ public class RegisterJuridicoActivity extends AppCompatActivity {
             complObjJurText.setText(endObj.getCompl());
             bairroObjJurText.setText(endObj.getBairro());
             cepObjJurText.setText(endObj.getCep());
-            pRefObjJurText.setText(endObj.getpRef());
+
 
             roteiroJuridicoText.setText(roteiro.getRoteiro());
 
@@ -226,6 +228,9 @@ public class RegisterJuridicoActivity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         Intent intent = new Intent(RegisterJuridicoActivity.this, addNewRegisterActivity.class);
+        intent.putExtra("isNew", "false");
+        intent.putExtra("tipo", tipoRegister);
+        intent.putExtra("id", newID.toString());
         startActivity(intent);
         finish();
     }
@@ -233,9 +238,6 @@ public class RegisterJuridicoActivity extends AppCompatActivity {
     public void saveRegister() {
 
         if(nomeEmpText.getText().length() > 0){
-            Integer id = newID;
-            if(newRegister)
-                id = dbEmpresa.getNewId();
 
             emp.setNome(nomeEmpText.getText().toString());
             emp.setCnpj(cnpjEmpText.getText().toString());
@@ -243,7 +245,7 @@ public class RegisterJuridicoActivity extends AppCompatActivity {
             emp.setEmail(emailEmpText.getText().toString());
             emp.setTel1(tel1EmpText.getText().toString());
             emp.setTel2(tel2EmpText.getText().toString());
-            emp.setId(id);
+            emp.setId(newID);
 
             repLegal.setNome(nomeRepLegalText.getText().toString());
             repLegal.setNacionalidade(nacioRepLegalText.getText().toString());
@@ -253,7 +255,7 @@ public class RegisterJuridicoActivity extends AppCompatActivity {
             repLegal.setCpf(cpfRepLegalText.getText().toString());
             repLegal.setEmail(emailRepLegalText.getText().toString());
             repLegal.setTel1(tel1RepLegalText.getText().toString());
-            repLegal.setId(id);
+            repLegal.setId(newID);
             repLegal.setEstadoCivil(spinnerEstadoCivilRepLegal.getSelectedItem().toString());
 
             endEmp.setRua(ruaEmpText.getText().toString());
@@ -264,7 +266,7 @@ public class RegisterJuridicoActivity extends AppCompatActivity {
             endEmp.setMunicipio(munEmpText.getText().toString());
             endEmp.setUf1(ufEmpText.getText().toString());
             endEmp.setpRef(pRefEmpText.getText().toString());
-            endEmp.setId(id);
+            endEmp.setId(newID);
 
             endRepLegal.setRua(ruaRepLegalText.getText().toString());
             endRepLegal.setNum(numRepLegalText.getText().toString());
@@ -273,18 +275,17 @@ public class RegisterJuridicoActivity extends AppCompatActivity {
             endRepLegal.setCep(cepRepLegalText.getText().toString());
             endRepLegal.setMunicipio(munRepLegalText.getText().toString());
             endRepLegal.setUf1(ufRepLegalText.getText().toString());
-            endRepLegal.setId(id);
+            endRepLegal.setId(newID);
 
             endObj.setRua(ruaObjJurText.getText().toString());
             endObj.setNum(numObjJurText.getText().toString());
             endObj.setCompl(complObjJurText.getText().toString());
             endObj.setBairro(bairroObjJurText.getText().toString());
             endObj.setCep(cepObjJurText.getText().toString());
-            endObj.setpRef(pRefObjJurText.getText().toString());
-            endObj.setId(id);
+            endObj.setId(newID);
 
             roteiro.setRoteiro(roteiroJuridicoText.getText().toString());
-            roteiro.setId(id);
+            roteiro.setId(newID);
 
             dbEmpresa.addEmpresa(emp);
             dbJuridico.addJur(repLegal);

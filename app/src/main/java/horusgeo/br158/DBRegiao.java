@@ -6,9 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DBRegiao extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "br158.db";
+    private static final String DATABASE_NAME = "BR_158_regs.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String TABLE = "regiao";
@@ -121,6 +124,36 @@ public class DBRegiao extends SQLiteOpenHelper {
 
         return regiao;
 
+    }
+
+    public Map<String, String> getMap(Integer id){
+        Map<String, String> map = new HashMap<String, String>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * FROM " + TABLE + " WHERE " + ID + " = " + id;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        try{
+            if (cursor.moveToFirst()) {
+                cursor.moveToFirst();
+                map.put("ColetaLixo", cursor.getString(1));
+                map.put("Transporte", cursor.getString(2));
+                map.put("Saude", cursor.getString(3));
+                map.put("Escola", cursor.getString(4));
+                map.put("Comercio", cursor.getString(5));
+                map.put("Lazer", cursor.getString(6));
+                map.put("Seguranca", cursor.getString(7));
+                map.put("Uso", cursor.getString(8));
+            }
+        }finally{
+            cursor.close();
+        }
+
+        db.close();
+
+        return map;
     }
 
 

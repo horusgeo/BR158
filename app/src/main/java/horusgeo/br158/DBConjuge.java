@@ -6,9 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DBConjuge extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "br158.db";
+    private static final String DATABASE_NAME = "BR_158_conjs.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String TABLE = "conjuges";
@@ -36,7 +39,7 @@ public class DBConjuge extends SQLiteOpenHelper {
                 DOC_ID + " TEXT," +
                 TIPO + " TEXT," +
                 CPF + " TEXT," +
-                TEL_1 + " TEXT," +
+                TEL_1 + " TEXT" +
                 ")";
         db.execSQL(CREATE_PROP_TABLE);
     }
@@ -118,6 +121,36 @@ public class DBConjuge extends SQLiteOpenHelper {
 
         return conjuge;
 
+    }
+
+    public Map<String, String> getMap(Integer id){
+        Map<String, String> map = new HashMap<String, String>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * FROM " + TABLE + " WHERE " + ID + " = " + id;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        try{
+            if (cursor.moveToFirst()) {
+                cursor.moveToFirst();
+                map.put("Nome_conj", cursor.getString(1));
+                map.put("Nacionalidade_conj", cursor.getString(2));
+                map.put("Profissao_conj", cursor.getString(3));
+                map.put("DocId_conj", cursor.getString(4));
+                map.put("DocTipo_conj", cursor.getString(5));
+                map.put("Cpf_conj", cursor.getString(6));
+                map.put("Tel1_conj", cursor.getString(7));
+
+            }
+        }finally{
+            cursor.close();
+        }
+
+        db.close();
+
+        return map;
     }
 
 

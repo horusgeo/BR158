@@ -20,7 +20,17 @@ public class Relatorio {
     private String responsavel;
 
     Relatorio(){
-
+        this.data1 = "";
+        this.data2 = "";
+        this.data3 = "";
+        this.horarioChegada = "";
+        this.horarioSaida = "";
+        this.horario2 = "";
+        this.horario3 = "";
+        this.descricao1 = "";
+        this.descricao2 = "";
+        this.descricao3 = "";
+        this.responsavel = "";
     }
 
     public Integer getId() {

@@ -4,9 +4,9 @@ public class Benfeitorias {
 
     private Integer id;
 
-    private String construcoes;
-    private String equipamentos;
-    private String croquis;
+    private String construcoes = "false";
+    private String equipamentos = "false";
+    private String croquis = "false";
 
     private String constucoesText;
     private String equipamentosText;
@@ -14,8 +14,13 @@ public class Benfeitorias {
 
 
     Benfeitorias(){
+        this.construcoes = "false";
+        this.equipamentos = "false";
+        this.croquis = "false";
 
-
+        this.constucoesText = "";
+        this.equipamentosText = "";
+        this.croquisText = "";
     }
 
     public String getConstrucoes() {

@@ -10,7 +10,10 @@ public class Confrontantes {
     private Integer id;
 
     Confrontantes(){
-
+        this.direita = "";
+        this.esquerda = "";
+        this.frente = "";
+        this.fundos = "";
     }
 
     public String getDireita() {

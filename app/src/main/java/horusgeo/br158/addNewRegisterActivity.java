@@ -12,13 +12,13 @@ public class addNewRegisterActivity extends AppCompatActivity {
     Button registerButton;
     Button empButton;
     Button propButton;
-    Button benfButton;
     Button fotoButton;
     Button relatorioButton;
     Button saveButton;
 
     DBProprietario dbProprietario;
     DBEmpresa dbEmpresa;
+    DBStatus dbStatus;
 
     TextView nomeText;
 
@@ -33,23 +33,23 @@ public class addNewRegisterActivity extends AppCompatActivity {
 
         final String isNew = intent.getStringExtra("isNew");
         final String tipo = intent.getStringExtra("tipo");
-        final String nome = intent.getStringExtra("nome");
+        id = Integer.parseInt(intent.getStringExtra("id"));
 
         dbProprietario = new DBProprietario(this, null, null, 1);
         dbEmpresa = new DBEmpresa(this, null, null, 1);
+        dbStatus = new DBStatus(this, null, null, 1);
 
         nomeText = (TextView) findViewById(R.id.textNomeProp);
 
         registerButton = (Button) findViewById(R.id.buttonRegister);
         empButton = (Button) findViewById(R.id.buttonJuridico);
         propButton = (Button) findViewById(R.id.buttonPropriedade);
-        benfButton = (Button) findViewById(R.id.buttonBenfeitorias);
         relatorioButton = (Button) findViewById(R.id.buttonRelatorio);
         fotoButton = (Button) findViewById(R.id.buttonFotos);
         saveButton = (Button) findViewById(R.id.buttonSave);
 
         if(isNew.equals("true")){
-            if(tipo.equals("juridica")){
+            if (tipo.equals("juridica")){
                 nomeText.setText("Pessoa Jurídica");
                 registerButton.setVisibility(View.INVISIBLE);
                 registerButton.setEnabled(false);
@@ -57,12 +57,10 @@ public class addNewRegisterActivity extends AppCompatActivity {
                 empButton.setEnabled(true);
             }
         } else {
-            nomeText.setText(nome);
-
-            if (tipo.equals("fisica"))
-                id = dbProprietario.getName2ID(nome);
-            else {
-                id = dbEmpresa.getName2ID(nome);
+            if (tipo.equals("fisica")) {
+                nomeText.setText(dbProprietario.getName(id));
+            } else {
+                nomeText.setText(dbEmpresa.getName(id));
                 registerButton.setVisibility(View.INVISIBLE);
                 empButton.setVisibility(View.VISIBLE);
                 registerButton.setEnabled(false);
@@ -76,6 +74,7 @@ public class addNewRegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(addNewRegisterActivity.this, RegisterActivity.class);
                 intent.putExtra("isNew", isNew);
+                intent.putExtra("tipo", tipo);
                 intent.putExtra("id", id.toString());
                 startActivity(intent);
                 finish();
@@ -88,6 +87,7 @@ public class addNewRegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(addNewRegisterActivity.this, RegisterJuridicoActivity.class);
                 intent.putExtra("isNew", isNew);
+                intent.putExtra("tipo", tipo);
                 intent.putExtra("id", id.toString());
                 startActivity(intent);
                 finish();
@@ -99,28 +99,21 @@ public class addNewRegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(addNewRegisterActivity.this, infoPropActivity.class);
                 intent.putExtra("isNew", isNew);
+                intent.putExtra("tipo", tipo);
                 intent.putExtra("id", id.toString());
                 startActivity(intent);
                 finish();
             }
         });
 
-        benfButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(addNewRegisterActivity.this, PropriedadeActivity.class);
-                intent.putExtra("isNew", isNew);
-                intent.putExtra("id", id.toString());
-                startActivity(intent);
-                finish();
-            }
-        });
+
 
         relatorioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(addNewRegisterActivity.this, RelatorioActivity.class);
                 intent.putExtra("isNew", isNew);
+                intent.putExtra("tipo", tipo);
                 intent.putExtra("id", id.toString());
                 startActivity(intent);
                 finish();
@@ -132,6 +125,7 @@ public class addNewRegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(addNewRegisterActivity.this, FotosActivity.class);
                 intent.putExtra("isNew", isNew);
+                intent.putExtra("tipo", tipo);
                 intent.putExtra("id", id.toString());
                 startActivity(intent);
                 finish();
@@ -150,9 +144,11 @@ public class addNewRegisterActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
+        dbStatus.setStatusChanged(id, 1);
         Intent intent = new Intent(addNewRegisterActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
+
 
 }

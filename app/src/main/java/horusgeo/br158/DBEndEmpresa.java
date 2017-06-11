@@ -6,9 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DBEndEmpresa extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "br158.db";
+    private static final String DATABASE_NAME = "BR_158_end_emps.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String TABLE = "end_empresa";
@@ -111,7 +114,7 @@ public class DBEndEmpresa extends SQLiteOpenHelper {
                 endereco.setCep(cursor.getString(5));
                 endereco.setMunicipio(cursor.getString(6));
                 endereco.setUf1(cursor.getString(7));
-                endereco.setpRef(cursor.getString(9));
+                endereco.setpRef(cursor.getString(8));
             }
         }finally{
             cursor.close();
@@ -121,6 +124,37 @@ public class DBEndEmpresa extends SQLiteOpenHelper {
 
         return endereco;
 
+    }
+
+    public Map<String, String> getMap(Integer id){
+        Map<String, String> map = new HashMap<String, String>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * FROM " + TABLE + " WHERE " + ID + " = " + id;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        try{
+            if (cursor.moveToFirst()) {
+                cursor.moveToFirst();
+                map.put("Rua_end_emp", cursor.getString(1));
+                map.put("Num_end_emp", cursor.getString(2));
+                map.put("Compl_end_emp", cursor.getString(3));
+                map.put("Bairro_end_emp", cursor.getString(4));
+                map.put("Cep_end_emp", cursor.getString(5));
+                map.put("Municipio_end_emp", cursor.getString(6));
+                map.put("Uf1_end_emp", cursor.getString(7));
+                map.put("pRef_end_emp", cursor.getString(8));
+
+            }
+        }finally{
+            cursor.close();
+        }
+
+        db.close();
+
+        return map;
     }
 
 

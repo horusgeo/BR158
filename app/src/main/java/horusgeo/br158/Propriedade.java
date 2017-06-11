@@ -7,12 +7,20 @@ public class Propriedade {
     private String topografia;
     private String manancial;
     private String situacao;
-    private String redeEletrica;
-    private String sinalTelefone;
-    private String abastecimentoAgua;
+    private String redeEletrica = "false";
+    private String sinalTelefone = "false";
+    private String abastecimentoAgua = "false";
     private Integer id;
 
     Propriedade(){
+
+        this.zoneamento = "";
+        this.topografia = "";
+        this.manancial = "";
+        this.situacao = "";
+        this.redeEletrica = "false";
+        this.sinalTelefone = "false";
+        this.abastecimentoAgua = "false";
 
     }
 

@@ -5,13 +5,16 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DBProprietario extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "br158.db";
+    private static final String DATABASE_NAME = "BR_158_propris.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String TABLE = "proprietarios";
@@ -142,7 +145,7 @@ public class DBProprietario extends SQLiteOpenHelper {
     public List<String> getAllNames(){
         List<String> registerList = new ArrayList<String>();
 
-        String selectQuery = "SELECT " + NOME + " FROM " + TABLE;
+        String selectQuery = "SELECT " + NOME +", " + ID + " FROM " + TABLE;
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -152,7 +155,9 @@ public class DBProprietario extends SQLiteOpenHelper {
             if (cursor.moveToFirst()) {
                 do {
                     String cadastro = cursor.getString(0);
-                    registerList.add(cadastro);
+                    String id = String.valueOf(cursor.getInt(1));
+                    String nome = cadastro + "-" + id;
+                    registerList.add(nome);
                 } while (cursor.moveToNext());
             }
         }finally{
@@ -162,27 +167,9 @@ public class DBProprietario extends SQLiteOpenHelper {
         return registerList;
     }
 
-    public Integer getName2ID(String nome){
-        String selectQuery = "SELECT " + ID + " FROM " + TABLE + "WHERE " + NOME + " = " + nome;
 
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        Cursor cursor = db.rawQuery(selectQuery, null);
-
-        Integer id = 0;
-
-        try {
-            if (cursor.moveToFirst())
-                id = cursor.getInt(0);
-        }finally{
-            cursor.close();
-        }
-        db.close();
-        return id;
-    }
-
-    public boolean exist(String nome){
-        String selectQuery = "SELECT " + NOME + " FROM " + TABLE + "WHERE " + NOME + " = " + nome;
+    public boolean exist(Integer id){
+        String selectQuery = "SELECT " + NOME + " FROM " + TABLE + " WHERE " + ID + " = " + id;
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -199,6 +186,25 @@ public class DBProprietario extends SQLiteOpenHelper {
         }
         db.close();
         return exists;
+    }
+
+    public String getName(Integer id){
+        String selectQuery = "SELECT " + NOME + " FROM " + TABLE + " WHERE " + ID + " = " + id;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        String nome = "";
+
+        try {
+            if (cursor.moveToFirst())
+                nome = cursor.getString(0);
+        }finally{
+            cursor.close();
+        }
+        db.close();
+        return nome;
     }
 
     public Integer getNewId(){
@@ -225,6 +231,40 @@ public class DBProprietario extends SQLiteOpenHelper {
 
         return id;
 
+    }
+
+    public Map<String, String> getMap(Integer id){
+        Map<String, String> map = new HashMap<String, String>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * FROM " + TABLE + " WHERE " + ID + " = " + id;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        try{
+            if (cursor.moveToFirst()) {
+                cursor.moveToFirst();
+                map.put("Nome_prop", cursor.getString(1));
+                map.put("Nacionalidade_prop", cursor.getString(2));
+                map.put("Profissao_prop", cursor.getString(3));
+                map.put("EstadoCivil_prop", cursor.getString(4));
+                map.put("DocId_prop", cursor.getString(5));
+                map.put("DocTipo_prop", cursor.getString(6));
+                map.put("Cpf_prop", cursor.getString(7));
+                map.put("Tel1_prop", cursor.getString(8));
+                map.put("Tel2_prop", cursor.getString(9));
+                map.put("Email_prop", cursor.getString(10));
+                map.put("PossProp_prop", cursor.getString(11));
+
+            }
+        }finally{
+            cursor.close();
+        }
+
+        db.close();
+
+        return map;
     }
 
 }

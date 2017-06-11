@@ -24,12 +24,13 @@ public class RelatorioActivity extends AppCompatActivity{
 
     EditText responsavel;
 
-    Relatorio relatorio;
+    Relatorio relatorio = new Relatorio();
 
     DBRelatorio dbrelatorio;
 
     Boolean newRegister = true;
     Integer newID = 0;
+    String tipoRegister;
 
     FloatingActionButton addRelatorio;
     FloatingActionButton cancelRelatorio;
@@ -54,9 +55,13 @@ public class RelatorioActivity extends AppCompatActivity{
 
         responsavel = (EditText) findViewById(R.id.responsavelRelatorioText);
 
+        addRelatorio = (FloatingActionButton) findViewById(R.id.relatorioAddButton);
+        cancelRelatorio = (FloatingActionButton) findViewById(R.id.relatorioCancelButton);
+
         Intent intent = getIntent();
 
         final String isNew = intent.getStringExtra("isNew");
+        tipoRegister = intent.getStringExtra("tipo");
         final String id = intent.getStringExtra("id");
 
         newID = Integer.parseInt(id);
@@ -90,6 +95,9 @@ public class RelatorioActivity extends AppCompatActivity{
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(RelatorioActivity.this, addNewRegisterActivity.class);
+        intent.putExtra("isNew", "false");
+        intent.putExtra("tipo", tipoRegister);
+        intent.putExtra("id", newID.toString());
         startActivity(intent);
         finish();
     }
@@ -131,6 +139,8 @@ public class RelatorioActivity extends AppCompatActivity{
             relatorio.setDescricao2(descricao2.getText().toString());
             relatorio.setDescricao3(descricao3.getText().toString());
             relatorio.setResponsavel(responsavel.getText().toString());
+
+            dbrelatorio.addRelatorio(relatorio);
         }
 
     }

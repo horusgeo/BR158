@@ -6,9 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DBEndPerson extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "br158.db";
+    private static final String DATABASE_NAME = "BR_158_end_persons.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String TABLE = "end_person";
@@ -129,6 +132,39 @@ public class DBEndPerson extends SQLiteOpenHelper {
 
         return endereco;
 
+    }
+
+    public Map<String, String> getMap(Integer id){
+        Map<String, String> map = new HashMap<String, String>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * FROM " + TABLE + " WHERE " + ID + " = " + id;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        try{
+            if (cursor.moveToFirst()) {
+                cursor.moveToFirst();
+                map.put("Rua_end_person", cursor.getString(1));
+                map.put("Num_end_person", cursor.getString(2));
+                map.put("Compl_end_person", cursor.getString(3));
+                map.put("Bairro_end_person", cursor.getString(4));
+                map.put("Cep_end_person", cursor.getString(5));
+                map.put("Municipio_end_person", cursor.getString(6));
+                map.put("Uf1_end_person", cursor.getString(7));
+                map.put("Comarca_end_person", cursor.getString(8));
+                map.put("Uf2_end_person", cursor.getString(9));
+                map.put("pRef_end_person", cursor.getString(10));
+
+            }
+        }finally{
+            cursor.close();
+        }
+
+        db.close();
+
+        return map;
     }
 
 

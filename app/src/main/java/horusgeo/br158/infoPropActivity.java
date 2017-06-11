@@ -61,6 +61,7 @@ public class infoPropActivity extends AppCompatActivity {
 
     Boolean newRegister = true;
     Integer newID = 0;
+    String tipoRegister;
 
     FloatingActionButton addInfoProp;
     FloatingActionButton cancelInfoProp;
@@ -111,6 +112,7 @@ public class infoPropActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         final String isNew = intent.getStringExtra("isNew");
+        tipoRegister = intent.getStringExtra("tipo");
         final String id = intent.getStringExtra("id");
 
         newID = Integer.parseInt(id);
@@ -164,17 +166,47 @@ public class infoPropActivity extends AppCompatActivity {
             manancial.setSelection(spinnerAdapter.getPosition(prop.getManancial()));
             spinnerAdapter = (ArrayAdapter) situacao.getAdapter();
             situacao.setSelection(spinnerAdapter.getPosition(prop.getSituacao()));
-            eletrica.setSelected(prop.getRedeEletrica().equals("true"));
-            agua.setSelected(prop.getAbastecimentoAgua().equals("true"));
-            telefone.setSelected(prop.getSinalTelefone().equals("true"));
+            if(prop.getRedeEletrica().equals("true"))
+                eletrica.setChecked(true);
+            else
+                eletrica.setChecked(false);
+            if(prop.getAbastecimentoAgua().equals("true"))
+                agua.setChecked(true);
+            else
+                agua.setChecked(false);
+            if(prop.getSinalTelefone().equals("true"))
+                telefone.setChecked(true);
+            else
+                telefone.setChecked(false);
 
-            lixo.setSelected(regiao.getColetaLixo().equals("true"));
-            transporte.setSelected(regiao.getTransporte().equals("true"));
-            saude.setSelected(regiao.getSaude().equals("true"));
-            escola.setSelected(regiao.getEscola().equals("true"));
-            comercio.setSelected(regiao.getComercio().equals("true"));
-            lazer.setSelected(regiao.getLazer().equals("true"));
-            seguranca.setSelected(regiao.getSeguranca().equals("true"));
+            if(regiao.getColetaLixo().equals("true"))
+                lixo.setChecked(true);
+            else
+                lixo.setChecked(false);
+            if(regiao.getTransporte().equals("true"))
+                transporte.setChecked(true);
+            else
+                transporte.setChecked(false);
+            if(regiao.getSaude().equals("true"))
+                saude.setChecked(true);
+            else
+                saude.setChecked(false);
+            if(regiao.getEscola().equals("true"))
+                escola.setChecked(true);
+            else
+                escola.setChecked(false);
+            if(regiao.getComercio().equals("true"))
+                comercio.setChecked(true);
+            else
+                comercio.setChecked(false);
+            if(regiao.getLazer().equals("true"))
+                lazer.setChecked(true);
+            else
+                lazer.setChecked(false);
+            if(regiao.getSeguranca().equals("true"))
+                seguranca.setChecked(true);
+            else
+                seguranca.setChecked(false);
             spinnerAdapter = (ArrayAdapter) uso.getAdapter();
             uso.setSelection(spinnerAdapter.getPosition(regiao.getUso()));
 
@@ -183,11 +215,20 @@ public class infoPropActivity extends AppCompatActivity {
             frente.setText(conf.getFrente());
             fundos.setText(conf.getFundos());
 
-            contrucoes.setSelected(benf.getConstrucoes().equals("true"));
+            if(benf.getConstrucoes().equals("true"))
+                contrucoes.setChecked(true);
+            else
+                contrucoes.setChecked(false);
             construcoesText.setText(benf.getConstucoesText());
-            equipamentos.setSelected(benf.getEquipamentos().equals("true"));
+            if(benf.getEquipamentos().equals("true"))
+                equipamentos.setChecked(true);
+            else
+                equipamentos.setChecked(false);
             equipamentosText.setText(benf.getEquipamentosText());
-            croquis.setSelected(benf.getCroquis().equals("true"));
+            if(benf.getCroquis().equals("true"))
+                croquis.setChecked(true);
+            else
+                croquis.setChecked(false);
             croquisText.setText(benf.getCroquisText());
 
             tipo.setText(plant.getTipo());
@@ -202,6 +243,9 @@ public class infoPropActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Intent intent = new Intent(infoPropActivity.this, addNewRegisterActivity.class);
+        intent.putExtra("isNew", "false");
+        intent.putExtra("tipo", tipoRegister);
+        intent.putExtra("id", newID.toString());
         startActivity(intent);
         finish();
     }

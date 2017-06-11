@@ -15,6 +15,13 @@ public class Empresa {
 
     Empresa(){
 
+        this.nome = "";
+        this.cnpj = "";
+        this.tel1 = "";
+        this.tel2 = "";
+        this.contato = "";
+        this.email = "";
+
     }
 
     public String getCnpj() {

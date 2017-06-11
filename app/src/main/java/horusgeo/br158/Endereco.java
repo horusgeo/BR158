@@ -18,6 +18,17 @@ public class Endereco {
 
     Endereco(){
 
+        this.rua = "";
+        this.num = "";
+        this.compl = "";
+        this.bairro = "";
+        this.cep = "";
+        this.municipio = "";
+        this.uf1 = "";
+        this.comarca = "";
+        this.uf2 = "";
+        this.pRef = "";
+
     }
 
     public String getRua() {

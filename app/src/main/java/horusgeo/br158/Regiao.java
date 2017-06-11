@@ -2,18 +2,25 @@ package horusgeo.br158;
 
 public class Regiao {
 
-    private String coletaLixo;
-    private String transporte;
-    private String saude;
-    private String escola;
-    private String comercio;
-    private String lazer;
-    private String seguranca;
+    private String coletaLixo = "false";
+    private String transporte = "false";
+    private String saude = "false";
+    private String escola = "false";
+    private String comercio = "false";
+    private String lazer = "false";
+    private String seguranca = "false";
     private String uso;
     private Integer id;
 
     Regiao(){
-
+        this.coletaLixo = "false";
+        this.transporte = "false";
+        this.saude = "false";
+        this.escola = "false";
+        this.comercio = "false";
+        this.lazer = "false";
+        this.seguranca = "false";
+        this.uso = "";
     }
 
     public String getColetaLixo() {

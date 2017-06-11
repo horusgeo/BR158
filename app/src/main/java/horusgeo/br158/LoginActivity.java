@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
 
 //        if(loginText.getText().toString().equals(login)){
 //            if(passwdText.getText().toString().equals(passwd)){
-                Intent intent = new Intent(LoginActivity.this, infoPropActivity.class);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 LoginActivity.this.startActivity(intent);
                 LoginActivity.this.finish();
 //            }else{

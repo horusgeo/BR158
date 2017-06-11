@@ -5,6 +5,7 @@ import android.support.annotation.IntegerRes;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -70,6 +71,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     Boolean newRegister = true;
     Integer newID = 0;
+    String tipoRegister;
 
     FloatingActionButton addRegister;
     FloatingActionButton cancelRegister;
@@ -127,6 +129,7 @@ public class RegisterActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         final String isNew = intent.getStringExtra("isNew");
+        tipoRegister = intent.getStringExtra("tipo");
         final String id = intent.getStringExtra("id");
 
         newID = Integer.parseInt(id);
@@ -217,7 +220,8 @@ public class RegisterActivity extends AppCompatActivity {
             if(prop.getPossProp().equals("true"))
                 propPoss = true;
 
-            switchPropPoss.setSelected(propPoss);
+            switchPropPoss.setChecked(propPoss);
+
 
         }
 
@@ -226,6 +230,9 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         Intent intent = new Intent(RegisterActivity.this, addNewRegisterActivity.class);
+        intent.putExtra("isNew", "false");
+        intent.putExtra("tipo", tipoRegister);
+        intent.putExtra("id", newID.toString());
         startActivity(intent);
         finish();
     }
@@ -233,10 +240,6 @@ public class RegisterActivity extends AppCompatActivity {
     public void saveRegister(){
 
         if(nomePropText.getText().length() > 0) {
-
-            Integer id = newID;
-            if(newRegister)
-                id = dbProprietario.getNewId();
 
             prop.setNome(nomePropText.getText().toString());
             prop.setNacionalidade(nacioPropText.getText().toString());
@@ -247,7 +250,7 @@ public class RegisterActivity extends AppCompatActivity {
             prop.setEmail(emailPropText.getText().toString());
             prop.setTel1(tel1PropText.getText().toString());
             prop.setTel2(tel2PropText.getText().toString());
-            prop.setId(id);
+            prop.setId(newID);
 
             conj.setNome(nomeConjText.getText().toString());
             conj.setNacionalidade(nacioConjText.getText().toString());
@@ -256,7 +259,7 @@ public class RegisterActivity extends AppCompatActivity {
             conj.setDocTipo(tipoConjText.getText().toString());
             conj.setCpf(cpfConjText.getText().toString());
             conj.setTel1(tel1ConjText.getText().toString());
-            conj.setId(id);
+            conj.setId(newID);
 
             endRes.setRua(ruaResText.getText().toString());
             endRes.setNum(numResText.getText().toString());
@@ -268,7 +271,7 @@ public class RegisterActivity extends AppCompatActivity {
             endRes.setComarca(comResText.getText().toString());
             endRes.setUf2(ufComResText.getText().toString());
             endRes.setpRef(pRefResText.getText().toString());
-            endRes.setId(id);
+            endRes.setId(newID);
 
             endObj.setRua(ruaObjText.getText().toString());
             endObj.setNum(numObjText.getText().toString());
@@ -276,14 +279,15 @@ public class RegisterActivity extends AppCompatActivity {
             endObj.setBairro(bairroObjText.getText().toString());
             endObj.setCep(cepObjText.getText().toString());
             endObj.setpRef(pRefObjText.getText().toString());
-            endObj.setId(id);
+            endObj.setId(newID);
 
             roteiro.setRoteiro(roteiroFisicaText.getText().toString());
-            roteiro.setId(id);
+            roteiro.setId(newID);
 
             prop.setEstadoCivil(spinnerEstadoCivil.getSelectedItem().toString());
 
             prop.setPossProp("false");
+
             if (switchPropPoss.isChecked())
                 prop.setPossProp("true");
 

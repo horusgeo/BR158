@@ -7,11 +7,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DBEmpresa extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "br158.db";
+    private static final String DATABASE_NAME = "BR_158_emps.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String TABLE = "empresa";
@@ -123,7 +125,7 @@ public class DBEmpresa extends SQLiteOpenHelper {
     public List<String> getAllNames(){
         List<String> registerList = new ArrayList<String>();
 
-        String selectQuery = "SELECT " + NOME + " FROM " + TABLE;
+        String selectQuery = "SELECT " + NOME + ", " + ID + " FROM " + TABLE;
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -133,7 +135,9 @@ public class DBEmpresa extends SQLiteOpenHelper {
             if (cursor.moveToFirst()) {
                 do {
                     String cadastro = cursor.getString(0);
-                    registerList.add(cadastro);
+                    String id = String.valueOf(cursor.getInt(1));
+                    String nome = cadastro + "-" + id;
+                    registerList.add(nome);
                 } while (cursor.moveToNext());
             }
         }finally{
@@ -144,7 +148,7 @@ public class DBEmpresa extends SQLiteOpenHelper {
     }
 
     public Integer getName2ID(String nome){
-        String selectQuery = "SELECT " + ID + " FROM " + TABLE + "WHERE " + NOME + " = " + nome;
+        String selectQuery = "SELECT " + ID + " FROM " + TABLE + " WHERE " + NOME + " = " + nome;
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -160,6 +164,25 @@ public class DBEmpresa extends SQLiteOpenHelper {
         }
         db.close();
         return id;
+    }
+
+    public String getName(Integer id){
+        String selectQuery = "SELECT " + NOME + " FROM " + TABLE + " WHERE " + ID + " = " + id;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        String nome = "";
+
+        try {
+            if (cursor.moveToFirst())
+                nome = cursor.getString(0);
+        }finally{
+            cursor.close();
+        }
+        db.close();
+        return nome;
     }
 
     public Integer getNewId(){
@@ -186,6 +209,35 @@ public class DBEmpresa extends SQLiteOpenHelper {
 
         return id;
 
+    }
+
+    public Map<String, String> getMap(Integer id){
+        Map<String, String> map = new HashMap<String, String>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * FROM " + TABLE + " WHERE " + ID + " = " + id;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        try{
+            if (cursor.moveToFirst()) {
+                cursor.moveToFirst();
+                map.put("Nome_emp", cursor.getString(1));
+                map.put("Cnpj_emp", cursor.getString(2));
+                map.put("Tel1_emp", cursor.getString(3));
+                map.put("Tel2_emp", cursor.getString(4));
+                map.put("Contato_emp", cursor.getString(5));
+                map.put("Email_emp", cursor.getString(6));
+
+            }
+        }finally{
+            cursor.close();
+        }
+
+        db.close();
+
+        return map;
     }
 
 

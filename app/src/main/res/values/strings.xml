@@ -52,6 +52,14 @@
         <item>Rural</item>
     </string-array>
 
-    <string name="empty_text">Defina um nome para a empresa</string>
+    <string name="empty_text">Defina um nome!</string>
+
+
+    <string-array name="fotos">
+        <item>Documento Identidade</item>
+        <item>CPF</item>
+        <item>Certidão</item>
+        <item>Teste</item>
+    </string-array>
 
 </resources>

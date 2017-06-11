@@ -6,9 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class DBBenfeitorias extends SQLiteOpenHelper{
 
-    private static final String DATABASE_NAME = "br158.db";
+    private static final String DATABASE_NAME = "BR_158_benfs.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String TABLE = "benfeitorias";
@@ -99,11 +102,11 @@ public class DBBenfeitorias extends SQLiteOpenHelper{
             if (cursor.moveToFirst()) {
                 cursor.moveToFirst();
                 benfeitorias.setId(cursor.getInt(0));
-                benfeitorias.setConstrucoes(cursor.getInt(1));
+                benfeitorias.setConstrucoes(cursor.getString(1));
                 benfeitorias.setConstucoesText(cursor.getString(2));
-                benfeitorias.setEquipamentos(cursor.getInt(3));
+                benfeitorias.setEquipamentos(cursor.getString(3));
                 benfeitorias.setEquipamentosText(cursor.getString(4));
-                benfeitorias.setCroquis(cursor.getInt(5));
+                benfeitorias.setCroquis(cursor.getString(5));
                 benfeitorias.setConstucoesText(cursor.getString(6));
 
             }
@@ -115,6 +118,35 @@ public class DBBenfeitorias extends SQLiteOpenHelper{
 
         return benfeitorias;
 
+    }
+
+    public Map<String, String> getMap(Integer id){
+        Map<String, String> map = new HashMap<String, String>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * FROM " + TABLE + " WHERE " + ID + " = " + id;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        try{
+            if (cursor.moveToFirst()) {
+                cursor.moveToFirst();
+                map.put("Construcoes", cursor.getString(1));
+                map.put("ConstucoesText", cursor.getString(2));
+                map.put("Equipamentos", cursor.getString(3));
+                map.put("EquipamentosText", cursor.getString(4));
+                map.put("Croquis", cursor.getString(5));
+                map.put("ConstucoesText", cursor.getString(6));
+
+            }
+        }finally{
+            cursor.close();
+        }
+
+        db.close();
+
+        return map;
     }
 
 

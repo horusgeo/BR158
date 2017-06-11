@@ -12,10 +12,22 @@ public class Person{
     private String email;
     private String tel1;
     private String tel2;
-    private String possProp;
+    private String possProp = "false";
     private Integer id;
 
     Person(){
+
+        this.nome = "";
+        this.nacionalidade = "";
+        this.profissao = "";
+        this.estadoCivil = "";
+        this.docId = "";
+        this.docTipo = "";
+        this.cpf = "";
+        this.email = "";
+        this.tel1 = "";
+        this.tel2 = "";
+        this.possProp = "false";
 
     }
 
