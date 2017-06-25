@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -42,6 +43,20 @@ public class DBPropriedade extends SQLiteOpenHelper {
                 SITUACAO + " TEXT" +
                 ")";
         db.execSQL(CREATE_PROP_TABLE);
+    }
+
+    public void print() {
+        String CREATE_PROP_TABLE = "CREATE TABLE " + TABLE + "(" +
+                ID + " INTEGER NOT NULL UNIQUE," +
+                ZONEAMENTO + " TEXT," +
+                TOPOGRAFIA + " TEXT," +
+                INFRAREDEEL + " TEXT," +
+                INFRASINTEL + " TEXT," +
+                INFRAABASAGUA + " TEXT," +
+                MANANCIAL + " TEXT," +
+                SITUACAO + " TEXT" +
+                ")";
+        Log.d("HORUSGEO_LOG", CREATE_PROP_TABLE);
     }
 
     @Override

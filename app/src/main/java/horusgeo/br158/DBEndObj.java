@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,6 +41,19 @@ public class DBEndObj extends SQLiteOpenHelper {
                 P_REF + " TEXT" +
                 ")";
         db.execSQL(CREATE_PROP_TABLE);
+    }
+
+    public void print() {
+        String CREATE_PROP_TABLE = "CREATE TABLE " + TABLE + "(" +
+                ID + " INTEGER NOT NULL UNIQUE," +
+                RUA + " TEXT," +
+                NUM + " TEXT," +
+                COMPL + " TEXT," +
+                BAIRRO + " TEXT," +
+                CEP + " TEXT," +
+                P_REF + " TEXT" +
+                ")";
+        Log.d("HORUSGEO_LOG", CREATE_PROP_TABLE);
     }
 
     @Override

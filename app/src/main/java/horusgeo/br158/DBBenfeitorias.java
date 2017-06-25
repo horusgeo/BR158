@@ -5,13 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class DBBenfeitorias extends SQLiteOpenHelper{
 
-    private static final String DATABASE_NAME = "BR_158_benfs.db";
+    private static final String DATABASE_NAME = "BR_158_benfs_2.db";
     private static final int DATABASE_VERSION = 1;
 
     private static final String TABLE = "benfeitorias";
@@ -32,6 +33,19 @@ public class DBBenfeitorias extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         String CREATE_PROP_TABLE = "CREATE TABLE " + TABLE + "(" +
                 ID + " INTEGER NOT NULL UNIQUE," +
+                CONSTRUCAO + " TEXT," +
+                CONSTRUCAOTEXT + " TEXT," +
+                EQUIPAMENTOS + " TEXT," +
+                EQUIPAMENTOSTEXT + " TEXT," +
+                CROQUIS + " TEXT," +
+                CROQUISTEXT + " TEXT" +
+                ")";
+        db.execSQL(CREATE_PROP_TABLE);
+    }
+
+    public void print() {
+        String CREATE_PROP_TABLE = "CREATE TABLE " + TABLE + "(" +
+                ID + " INTEGER NOT NULL UNIQUE," +
                 CONSTRUCAO + " INTEGER," +
                 CONSTRUCAOTEXT + " TEXT," +
                 EQUIPAMENTOS + " INTEGER," +
@@ -39,7 +53,7 @@ public class DBBenfeitorias extends SQLiteOpenHelper{
                 CROQUIS + " INTEGER," +
                 CROQUISTEXT + " TEXT" +
                 ")";
-        db.execSQL(CREATE_PROP_TABLE);
+        Log.d("HORUSGEO_LOG", CREATE_PROP_TABLE);
     }
 
     @Override

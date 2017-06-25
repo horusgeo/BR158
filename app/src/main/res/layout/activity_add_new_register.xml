@@ -103,15 +103,50 @@
         />
 
         <Button
-            android:id="@+id/buttonFotos"
+        android:id="@+id/buttonFotos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fotos / Documentos"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRelatorio"
+        android:layout_marginTop="8dp"
+        />
+
+        <Button
+            android:id="@+id/buttonLatLng"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Fotos / Documentos"
+            android:text="Registrar Coordenadas"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonRelatorio"
+            app:layout_constraintTop_toBottomOf="@+id/buttonFotos"
             android:layout_marginTop="8dp"
-        />
+            />
+
+        <TextView
+            android:id="@+id/textLat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Lat: "
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/textLng"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLatLng" />
+
+        <TextView
+            android:id="@+id/textLng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Lng: "
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@+id/textLat"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLatLng" />
 
         <ImageView
             android:id="@+id/imageView62"
@@ -124,7 +159,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonFotos"
+            app:layout_constraintTop_toBottomOf="@+id/textLat"
             app:srcCompat="@drawable/bar" />
 
         <Button

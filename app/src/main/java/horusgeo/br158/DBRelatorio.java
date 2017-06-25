@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -50,6 +51,24 @@ public class DBRelatorio extends SQLiteOpenHelper {
                 RESPONSAVEL + " TEXT" +
                 ")";
         db.execSQL(CREATE_PROP_TABLE);
+    }
+
+    public void print() {
+        String CREATE_PROP_TABLE = "CREATE TABLE " + TABLE + "(" +
+                ID + " INTEGER NOT NULL UNIQUE," +
+                DATA1 + " TEXT," +
+                DATA2 + " TEXT," +
+                DATA3 + " TEXT," +
+                HORARIO_CHEGADA + " TEXT," +
+                HORARIO_SAIDA + " TEXT," +
+                HORARIO2 + " TEXT," +
+                HORARIO3 + " TEXT," +
+                DESCRICAO1 + " TEXT," +
+                DESCRICAO2 + " TEXT," +
+                DESCRICAO3 + " TEXT," +
+                RESPONSAVEL + " TEXT" +
+                ")";
+        Log.d("HORUSGEO_LOG", CREATE_PROP_TABLE);
     }
 
     @Override

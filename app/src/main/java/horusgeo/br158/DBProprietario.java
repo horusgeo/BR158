@@ -55,6 +55,24 @@ public class DBProprietario extends SQLiteOpenHelper {
         db.execSQL(CREATE_PROP_TABLE);
     }
 
+    public void print() {
+        String CREATE_PROP_TABLE = "CREATE TABLE " + TABLE + "(" +
+                ID + " INTEGER NOT NULL UNIQUE," +
+                NOME + " TEXT," +
+                NACIONALIDADE + " TEXT," +
+                PROFISSAO + " TEXT," +
+                ESTADO_CIVIL + " TEXT," +
+                DOC_ID + " TEXT," +
+                TIPO + " TEXT," +
+                CPF + " TEXT," +
+                TEL_1 + " TEXT," +
+                TEL_2 + " TEXT," +
+                EMAIL + " TEXT," +
+                POSSPROP + " TEXT" +
+                ")";
+        Log.d("HORUSGEO_LOG", CREATE_PROP_TABLE);
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE);

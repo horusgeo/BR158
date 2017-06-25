@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.StringRequest;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
     DBRoteiroAcesso dbRoteiroAcesso;
     DBStatus dbStatus;
     DBFotos dbFotos;
+    DBLatLng dbLatLng;
 
     ListView listaCadastros;
 
@@ -63,6 +65,13 @@ public class MainActivity extends AppCompatActivity {
 
     Spinner filterSpinner;
 
+    ProgressDialog dialogProgress;
+
+    ArrayList<Integer> list2Send;
+    Integer max2Send = 0;
+    Integer cnt2Send = 0;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
         dbProprietario = new DBProprietario(this, null, null, 1);
         dbEmpresa = new DBEmpresa(this, null, null, 1);
+        dbStatus = new DBStatus(this, null, null, 1);
 
         listAdapter = new ArrayAdapter<String>(MainActivity.this,
                 android.R.layout.simple_list_item_1,
@@ -85,6 +95,8 @@ public class MainActivity extends AppCompatActivity {
         sendRegister = (Button) findViewById(R.id.sendButton);
 
         filterSpinner = (Spinner) findViewById(R.id.filterRegistersSpinner);
+
+        dialogProgress = new ProgressDialog(this);
 
         returnMap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,6 +134,14 @@ public class MainActivity extends AppCompatActivity {
         sendRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                list2Send = dbStatus.getStatus();
+                max2Send = list2Send.size();
+                String msg = "Enviando Cadastros! Por Favor, aguarde!\nEnviando cadastro:" + list2Send.get(0);
+                dialogProgress.setMessage(msg);
+                dialogProgress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                dialogProgress.show();
+                dialogProgress.setCancelable(false);
                 send();
             }
         });
@@ -176,97 +196,114 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        Intent intent = new Intent(MainActivity.this, MapsActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+        //startActivity(intent);
         finish();
     }
 
-    private void send(){
+    private void send() {
 
-        final Vector<Integer> list = dbStatus.getStatus();
-
-        final int max = list.size();
-        if (max > 0) {
-
-            final ProgressDialog dialogProgress = new ProgressDialog(this);
-
-            RequestQueue queue = Volley.newRequestQueue(this);
-
-            dialogProgress.setMessage("Enviando Cadastros! Por Favor, aguarde!");
-            dialogProgress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-            dialogProgress.setProgress(0);
-            dialogProgress.show();
-            dialogProgress.setCancelable(false);
-
-            final String url = "http://horusgeo.com.br/br158/dbfunctions/upload.php";
-
-            dbBenfeitorias = new DBBenfeitorias(this, null, null, 1);
-            dbConfrontantes = new DBConfrontantes(this, null, null, 1);
-            dbConjuge = new DBConjuge(this, null, null, 1);
-            dbEndEmpresa = new DBEndEmpresa(this, null, null, 1);
-            dbEndObj = new DBEndObj(this, null, null, 1);
-            dbEndPerson = new DBEndPerson(this, null, null, 1);
-            dbJuridico = new DBJuridico(this, null, null, 1);
-            dbPlantacoes = new DBPlantacoes(this, null, null, 1);
-            dbPropriedade = new DBPropriedade(this, null, null, 1);
-            dbRegiao = new DBRegiao(this, null, null, 1);
-            dbRelatorio = new DBRelatorio(this, null, null, 1);
-            dbRoteiroAcesso = new DBRoteiroAcesso(this, null, null, 1);
-            dbStatus = new DBStatus(this, null, null, 1);
-            dbFotos = new DBFotos(this, null, null, 1);
+        if(list2Send.size() > 0) {
+            Integer id = list2Send.get(0);
+            list2Send.remove(0);
 
 
-            for (int i = 0; i < list.size(); i++) {
-                final Integer id = list.elementAt(i);
-                String msg = "Enviando Cadastros! Por Favor, aguarde!\nEnviando cadastro:" + id;
-                dialogProgress.setMessage(msg);
-                dialogProgress.setProgress(i / max);
-                StringRequest postRequest = new StringRequest(Request.Method.POST, url,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                // response
-                                Log.d("Response", response);
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                // error
-                                dialogProgress.dismiss();
-                                Toast toast = Toast.makeText(getApplicationContext(),
-                                        "Falha ao enviar o cadastro:" + id, Toast.LENGTH_LONG);
-                                toast.show();
-                            }
-                        }
-                ) {
-                    @Override
-                    protected Map<String, String> getParams() {
-                        Map<String, String> params = new HashMap<String, String>();
-                        params.put("id", String.valueOf(id));
-                        params.putAll(dbBenfeitorias.getMap(id));
-                        params.putAll(dbConfrontantes.getMap(id));
-                        params.putAll(dbConjuge.getMap(id));
-                        params.putAll(dbEmpresa.getMap(id));
-                        params.putAll(dbEndEmpresa.getMap(id));
-                        params.putAll(dbEndObj.getMap(id));
-                        params.putAll(dbEndPerson.getMap(id));
-                        params.putAll(dbJuridico.getMap(id));
-                        params.putAll(dbPlantacoes.getMap(id));
-                        params.putAll(dbPropriedade.getMap(id));
-                        params.putAll(dbProprietario.getMap(id));
-                        params.putAll(dbRegiao.getMap(id));
-                        params.putAll(dbRelatorio.getMap(id));
-                        params.putAll(dbRoteiroAcesso.getMap(id));
-                        params.putAll(dbFotos.getMap(id, getContentResolver()));
-                        return params;
-                    }
-                };
-                queue.add(postRequest);
+            call_volley(id);
+        }else {
 
-            }
+            dialogProgress.dismiss();
+
         }
     }
+
+    private void call_volley(final Integer id_send){
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        final String url = "http://horusgeo.com.br/br158/dbfunctions/upload.php";
+
+        dbBenfeitorias = new DBBenfeitorias(this, null, null, 1);
+        dbConfrontantes = new DBConfrontantes(this, null, null, 1);
+        dbConjuge = new DBConjuge(this, null, null, 1);
+        dbEndEmpresa = new DBEndEmpresa(this, null, null, 1);
+        dbEndObj = new DBEndObj(this, null, null, 1);
+        dbEndPerson = new DBEndPerson(this, null, null, 1);
+        dbJuridico = new DBJuridico(this, null, null, 1);
+        dbPlantacoes = new DBPlantacoes(this, null, null, 1);
+        dbPropriedade = new DBPropriedade(this, null, null, 1);
+        dbRegiao = new DBRegiao(this, null, null, 1);
+        dbRelatorio = new DBRelatorio(this, null, null, 1);
+        dbRoteiroAcesso = new DBRoteiroAcesso(this, null, null, 1);
+        dbFotos = new DBFotos(this, null, null, 1);
+        dbLatLng = new DBLatLng(this, null, null, 1);
+
+        StringRequest postRequest = new StringRequest(Request.Method.POST, url,
+            new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+                    // response
+                    Log.d("HORUSGEO_LOG", response);
+                    String[] lista = response.split("-");
+                    if(lista[0].equals("ok")) {
+                        if(list2Send.size() > 0) {
+                            String msg = "Enviando Cadastros! Por Favor, aguarde!\nEnviando cadastro:" + list2Send.get(0);
+                            cnt2Send += 1;
+                            Double progress = (cnt2Send / (double)max2Send) * 100;
+                            dialogProgress.setProgress(progress.intValue());
+                            dialogProgress.setMessage(msg);
+                        }
+                        dbStatus.setStatusChanged(Integer.parseInt(lista[1]), 0);
+                        dbFotos.setNova(Integer.parseInt(lista[1]));
+                        send();
+                    }
+                }
+            },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    // error
+                    Log.d("HORUSGEO_LOG", error.toString());
+                    Toast toast = Toast.makeText(getApplicationContext(),
+                            "Falha ao enviar o cadastro:" + id_send, Toast.LENGTH_LONG);
+                    toast.show();
+                    dialogProgress.dismiss();
+                }
+            }
+            ) {
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("id", String.valueOf(id_send));
+                    params.putAll(dbBenfeitorias.getMap(id_send));
+                    params.putAll(dbConfrontantes.getMap(id_send));
+                    params.putAll(dbConjuge.getMap(id_send));
+                    params.putAll(dbEmpresa.getMap(id_send));
+                    params.putAll(dbEndEmpresa.getMap(id_send));
+                    params.putAll(dbEndObj.getMap(id_send));
+                    params.putAll(dbEndPerson.getMap(id_send));
+                    params.putAll(dbJuridico.getMap(id_send));
+                    params.putAll(dbPlantacoes.getMap(id_send));
+                    params.putAll(dbPropriedade.getMap(id_send));
+                    params.putAll(dbProprietario.getMap(id_send));
+                    params.putAll(dbRegiao.getMap(id_send));
+                    params.putAll(dbRelatorio.getMap(id_send));
+                    params.putAll(dbRoteiroAcesso.getMap(id_send));
+                    params.putAll(dbLatLng.getMap(id_send));
+                    params.putAll(dbStatus.getMap(id_send));
+                    params.putAll(dbFotos.getMap(id_send, getContentResolver()));
+
+                    return params;
+                }
+            };
+        queue.add(postRequest);
+
+    }
+
+
+
+
+
+
 
 }
 

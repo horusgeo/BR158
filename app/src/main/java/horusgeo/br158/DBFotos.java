@@ -48,6 +48,17 @@ public class DBFotos extends SQLiteOpenHelper {
         db.execSQL(CREATE_PROP_TABLE);
     }
 
+    public void print() {
+        String CREATE_PROP_TABLE = "CREATE TABLE " + TABLE + "(" +
+                ID + " INTEGER, " +
+                TIPO + " INTEGER," +
+                FILE + " TEXT," +
+                PATH + " TEXT," +
+                NOVA + " INTEGER" +
+                ")";
+        Log.d("HORUSGEO_LOG", CREATE_PROP_TABLE);
+    }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE);
@@ -132,8 +143,8 @@ public class DBFotos extends SQLiteOpenHelper {
                 do {
                     if(cursor.getInt(4) == 1) {
                         map.put(
-                                cursor.getString(2),
-                                String.valueOf(cursor.getInt(1)) + " * " + cursor.getString(2) + " * " + getStringImage(content, cursor.getString(3)));
+                                "foto-" + cursor.getString(2),
+                                String.valueOf(cursor.getInt(1)) + " : " + cursor.getString(2) + " : " + getStringImage(content, cursor.getString(3)));
                     }
                 }while(cursor.moveToNext());
 
@@ -156,6 +167,15 @@ public class DBFotos extends SQLiteOpenHelper {
         byte[] imageBytes = baos.toByteArray();
         String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
         return encodedImage;
+    }
+
+    public void setNova(Integer id){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String sql = "UPDATE " + TABLE + " SET " + NOVA + " =  0 WHERE " + ID + " = " + id;
+
+        db.execSQL(sql);
+
     }
 
 

@@ -7,23 +7,23 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Vector;
 
-public class DBConfrontantes extends SQLiteOpenHelper {
+public class DBLatLng extends SQLiteOpenHelper {
 
-    private static final String DATABASE_NAME = "BR_158_confs.db";
+    private static final String DATABASE_NAME = "BR_158_latlng.db";
     private static final int DATABASE_VERSION = 1;
 
-    private static final String TABLE = "confrontantes";
+    private static final String TABLE = "latlng";
 
     private static final String ID = "id";
-    private static final String DIREITA = "direita";
-    private static final String ESQUERDA = "esquerda";
-    private static final String FRENTE = "frente";
-    private static final String FUNDOS = "fundos";
-    
-    public DBConfrontantes(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
+    private static final String LAT = "lat";
+    private static final String LNG = "lng";
+
+    public DBLatLng(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }
 
@@ -31,10 +31,8 @@ public class DBConfrontantes extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_PROP_TABLE = "CREATE TABLE " + TABLE + "(" +
                 ID + " INTEGER NOT NULL UNIQUE," +
-                DIREITA + " TEXT," +
-                ESQUERDA + " TEXT," +
-                FRENTE + " TEXT," +
-                FUNDOS + " TEXT" +
+                LAT + " TEXT, " +
+                LNG + " TEXT" +
                 ")";
         db.execSQL(CREATE_PROP_TABLE);
     }
@@ -42,13 +40,12 @@ public class DBConfrontantes extends SQLiteOpenHelper {
     public void print() {
         String CREATE_PROP_TABLE = "CREATE TABLE " + TABLE + "(" +
                 ID + " INTEGER NOT NULL UNIQUE," +
-                DIREITA + " TEXT," +
-                ESQUERDA + " TEXT," +
-                FRENTE + " TEXT," +
-                FUNDOS + " TEXT" +
+                LAT + " TEXT, " +
+                LNG + " TEXT" +
                 ")";
         Log.d("HORUSGEO_LOG", CREATE_PROP_TABLE);
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
@@ -56,23 +53,21 @@ public class DBConfrontantes extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addConfrontantes(Confrontantes cadastro){
+    public void addLatLng(Integer id, LatLng latLng){
 
         ContentValues values = new ContentValues();
 
-        values.put(ID, cadastro.getId());
-        values.put(DIREITA, cadastro.getDireita());
-        values.put(ESQUERDA, cadastro.getEsquerda());
-        values.put(FRENTE, cadastro.getFrente());
-        values.put(FUNDOS, cadastro.getFundos());
-        
+        values.put(ID, id);
+        values.put(LAT, latLng.getLat());
+        values.put(LNG, latLng.getLng());
+
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + TABLE + " WHERE " + ID + " = " + cadastro.getId();
+        String query = "SELECT * FROM " + TABLE + " WHERE " + ID + " = " + id;
         Cursor cursor = db.rawQuery(query, null);
 
         try{
             if (cursor.getCount() > 0){
-                db.update(TABLE, values, ID + "=" + cadastro.getId(), null);
+                db.update(TABLE, values, ID + "=" + id, null);
             }else{
                 db.insert(TABLE, null, values);
             }
@@ -85,32 +80,30 @@ public class DBConfrontantes extends SQLiteOpenHelper {
 
     }
 
-    public void deleteConfrontantes(Confrontantes cadastro){
+    public void deleteLatLng(Integer id){
 
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE, ID + " = " + cadastro.getId(), null);
+        db.delete(TABLE, ID + " = " + id, null);
         db.close();
 
     }
 
-    public Confrontantes getConfrontantes(Integer id){
+    public LatLng getLatLng(){
 
-        Confrontantes confrontantes = new Confrontantes();
+        LatLng latLng = new LatLng();
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        String query = "SELECT * FROM " + TABLE + " WHERE " + ID + " = " + id;
+        String query = "SELECT * FROM " + TABLE;
 
         Cursor cursor = db.rawQuery(query, null);
 
         try{
             if (cursor.moveToFirst()) {
                 cursor.moveToFirst();
-                confrontantes.setId(cursor.getInt(0));
-                confrontantes.setDireita(cursor.getString(1));
-                confrontantes.setEsquerda(cursor.getString(2));
-                confrontantes.setFrente(cursor.getString(3));
-                confrontantes.setFundos(cursor.getString(4));
+                latLng.setId(cursor.getInt(0));
+                latLng.setLat(cursor.getString(1));
+                latLng.setLng(cursor.getString(2));
             }
         }finally{
             cursor.close();
@@ -118,7 +111,7 @@ public class DBConfrontantes extends SQLiteOpenHelper {
 
         db.close();
 
-        return confrontantes;
+        return latLng;
 
     }
 
@@ -134,10 +127,8 @@ public class DBConfrontantes extends SQLiteOpenHelper {
         try{
             if (cursor.moveToFirst()) {
                 cursor.moveToFirst();
-                map.put("Direita", cursor.getString(1));
-                map.put("Esquerda", cursor.getString(2));
-                map.put("Frente", cursor.getString(3));
-                map.put("Fundos", cursor.getString(4));
+                map.put("Lat", cursor.getString(1));
+                map.put("Lng", cursor.getString(2));
 
             }
         }finally{
@@ -148,6 +139,5 @@ public class DBConfrontantes extends SQLiteOpenHelper {
 
         return map;
     }
-
 
 }

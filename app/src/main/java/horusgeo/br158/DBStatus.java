@@ -5,8 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 public class DBStatus extends SQLiteOpenHelper {
@@ -30,6 +34,14 @@ public class DBStatus extends SQLiteOpenHelper {
                 STATUS + " INTEGER" +
                 ")";
         db.execSQL(CREATE_PROP_TABLE);
+    }
+
+    public void print() {
+        String CREATE_PROP_TABLE = "CREATE TABLE " + TABLE + "(" +
+                ID + " INTEGER NOT NULL UNIQUE," +
+                STATUS + " INTEGER" +
+                ")";
+        Log.d("HORUSGEO_LOG", CREATE_PROP_TABLE);
     }
 
     @Override
@@ -72,9 +84,9 @@ public class DBStatus extends SQLiteOpenHelper {
 
     }
 
-    public Vector<Integer> getStatus(){
+    public ArrayList<Integer> getStatus(){
 
-        Vector<Integer> list = new Vector<>();
+        ArrayList<Integer> list = new ArrayList<>();
 
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -84,9 +96,10 @@ public class DBStatus extends SQLiteOpenHelper {
 
         try{
             if (cursor.moveToFirst()) {
-                cursor.moveToFirst();
-                if(cursor.getInt(1) != 0)
-                    list.add(cursor.getInt(0));
+                do {
+                    if(cursor.getInt(1) != 0)
+                        list.add(cursor.getInt(0));
+                } while (cursor.moveToNext());
             }
         }finally{
             cursor.close();
@@ -96,6 +109,30 @@ public class DBStatus extends SQLiteOpenHelper {
 
         return list;
 
+    }
+
+    public Map<String, String> getMap(Integer id){
+        Map<String, String> map = new HashMap<String, String>();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "SELECT * FROM " + TABLE + " WHERE " + ID + " = " + id;
+
+        Cursor cursor = db.rawQuery(query, null);
+
+        try{
+            if (cursor.moveToFirst()) {
+                cursor.moveToFirst();
+                map.put("Status", String.valueOf(cursor.getInt(1)));
+
+            }
+        }finally{
+            cursor.close();
+        }
+
+        db.close();
+
+        return map;
     }
 
 }

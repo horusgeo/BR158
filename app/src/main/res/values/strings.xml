@@ -56,10 +56,57 @@
 
 
     <string-array name="fotos">
-        <item>Documento Identidade</item>
-        <item>CPF</item>
-        <item>Certidão</item>
-        <item>Teste</item>
+        <item>Fotos Propriedade</item>
+        <item>Carteira de identidade - Proprietário</item>
+        <item>Carteira de identidade - Cônjuge</item>
+        <item>CPF - Proprietário</item>
+        <item>CPF - Cônjuge</item>
+        <item>Comprovante de endereço</item>
+        <item>Certidão de casamento</item>
+        <item>Certidão de casamento com averbação do divórcio - se divorciado</item>
+        <item>Certidão de nascimento - se solteiro</item>
+        <item>Declaração de união estável</item>
+        <item>Escritura de Pacto Antenupcial registrada - se casados no regime de comunhão de bens ou separação de bens convencional após 26/12/1977 , Lei 6515/77</item>
+        <item>Carteira de identidade - Herdeiro</item>
+        <item>Carteira de identidade - Cônjuge herdeiro</item>
+        <item>CPF - Herdeiro</item>
+        <item>CPF - Cônjuge herdeiro</item>
+        <item>Comprovante de endereço</item>
+        <item>Certidão de casamento</item>
+        <item>Formal de partilha (caso não esteja registrado)</item>
+        <item>Certidão de óbito </item>
+        <item>Certidão de casamento do viúvo(a)</item>
+        <item>Nº do processo - Espólio</item>
+        <item>Qualificação completa do inventariante</item>
+        <item>Termo de nomeação do inventariante</item>
+        <item>CPF do inventariante</item>
+        <item>RG do inventariante</item>
+        <item>Contrato social ou Estatuto social registrado</item>
+        <item>Última alteração contratual registrada ou Ata de Eleição e Posse da diretoria Registrada e Ata de aprovação da venda ou compra do imóvel registrada</item>
+        <item>Certidão Simplificada da Junta Comercial atualizada 30 dias ou Certidão de Breve Relato atualizada</item>
+        <item>Cadastro de pessoa jurídica (CNPJ)</item>
+        <item>Carteira de identidade do(s) representante(s) </item>
+        <item>CPF do(s) representante(s)</item>
+        <item>Procuração original (caso não conste o representante no contrato ou estatuto)</item>
+        <item>Certidão de casamento atualizada do(s) representante(s)</item>
+        <item>Comprovante de endereço atualizado da empresa</item>
+        <item>Comprovante de endereço atualizado do(s) representante(s)</item>
+        <item>Certidão de registro atualizada (30 dias)</item>
+        <item>Certidão negativa (NO CASO DE POSSEIRO)</item>
+        <item>Escritura de aquisição do imóvel</item>
+        <item>Contrato de compra e venda</item>
+        <item>Comprovante de IPTU (IMÓVEL URBANO)</item>
+        <item>Comprovante de CCIR 2010/2011/2012/2013/2014 (IMÓVEL RURAL)</item>
+        <item>Declaração do ITR do último exercício (IMÓVEL RURAL)</item>
+        <item>CAR (IMÓVEL RURAL)</item>
+        <item>Planta plotada de loteamento (IMÓVEL URBANO) ou Planta do terreno/ gleba (RURAL)</item>
+        <item>Ata de posse</item>
+        <item>Identidade e CPF do prefeito</item>
+        <item>Certidão de casamento - prefeito</item>
+        <item>Comprovante de endereço atualizado do prefeito</item>
+        <item>Comprovante de endereço atualizado da prefeitura</item>
+        <item>Documentos Extras</item>
+
     </string-array>
 
 </resources>

@@ -114,6 +114,7 @@ public class FotosInternActivity extends AppCompatActivity {
         listAdapter.clear();
         for(Fotos temp : fotos){
             listImage.add(temp.getPath());
+            Log.d("HORUSGEO_LOG", temp.getPath().toString());
         }
         listAdapter.notifyDataSetChanged();
 

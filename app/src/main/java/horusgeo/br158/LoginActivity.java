@@ -21,10 +21,10 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
-//    private String login = "cappe";
-//    private String passwd = "br158";
-    private String login = "a";
-    private String passwd = "a";
+    private String login = "cappe";
+    private String passwd = "br158";
+//    private String login = "a";
+//    private String passwd = "a";
     EditText loginText;
     EditText passwdText;
     Button loginButton;
@@ -77,21 +77,21 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void doLogin(){
-//        TODO: Return intent to MapsActivity
 
-//        if(loginText.getText().toString().equals(login)){
-//            if(passwdText.getText().toString().equals(passwd)){
+
+        if(loginText.getText().toString().equals(login)){
+            if(passwdText.getText().toString().equals(passwd)){
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 LoginActivity.this.startActivity(intent);
                 LoginActivity.this.finish();
-//            }else{
-//                Toast.makeText(LoginActivity.this, "Senha incorreta!", Toast.LENGTH_LONG).show();
-//                passwdText.setError("Verifique a senha");
-//            }
-//        }else{
-//            Toast.makeText(LoginActivity.this, "Usuário incorreto!", Toast.LENGTH_LONG).show();
-//            loginText.setError("Verifique o login");
-//        }
+            }else{
+                Toast.makeText(LoginActivity.this, "Senha incorreta!", Toast.LENGTH_LONG).show();
+                passwdText.setError("Verifique a senha");
+            }
+        }else{
+            Toast.makeText(LoginActivity.this, "Usuário incorreto!", Toast.LENGTH_LONG).show();
+            loginText.setError("Verifique o login");
+        }
 
     }
 }
