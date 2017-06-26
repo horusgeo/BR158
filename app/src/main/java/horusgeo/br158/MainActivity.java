@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
         listaCadastros.setAdapter(listAdapter);
 
-        returnMap = (Button) findViewById(R.id.returnToMapButton);
+//        returnMap = (Button) findViewById(R.id.returnToMapButton);
         addNewRegister = (Button) findViewById(R.id.addNewRegisterButton);
         addNewEmp = (Button) findViewById(R.id.addNewEmpButton);
         sendRegister = (Button) findViewById(R.id.sendButton);
@@ -98,14 +98,14 @@ public class MainActivity extends AppCompatActivity {
 
         dialogProgress = new ProgressDialog(this);
 
-        returnMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, MapsActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
+//        returnMap.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+//                startActivity(intent);
+//                finish();
+//            }
+//        });
 
         addNewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,12 +137,15 @@ public class MainActivity extends AppCompatActivity {
 
                 list2Send = dbStatus.getStatus();
                 max2Send = list2Send.size();
-                String msg = "Enviando Cadastros! Por Favor, aguarde!\nEnviando cadastro:" + list2Send.get(0);
-                dialogProgress.setMessage(msg);
-                dialogProgress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                dialogProgress.show();
-                dialogProgress.setCancelable(false);
-                send();
+                if(max2Send!= 0) {
+                    String msg = "Enviando Cadastros! Por Favor, aguarde!\nEnviando cadastro:" + list2Send.get(0);
+                    dialogProgress.setMessage(msg);
+
+                    dialogProgress.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+                    dialogProgress.show();
+                    dialogProgress.setCancelable(false);
+                    send();
+                }
             }
         });
 

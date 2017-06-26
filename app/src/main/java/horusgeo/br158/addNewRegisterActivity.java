@@ -87,8 +87,13 @@ public class addNewRegisterActivity extends AppCompatActivity {
                 lng = Double.parseDouble(latlng.getLng());
             if (tipo.equals("fisica")) {
                 nomeText.setText(dbProprietario.getName(id));
-                latText.setText("Lat: " + latlng.getLat());
-                lngText.setText("Lng: " + latlng.getLng());
+                if(!latlng.getLat().isEmpty()) {
+                    latText.setText("Lat: " + latlng.getLat().substring(0, 8));
+                    lngText.setText("Lng: " + latlng.getLng().substring(0, 8));
+                }else{
+                    latText.setText("Lat: 0.0");
+                    lngText.setText("Lng: 0.0");
+                }
 
             } else {
                 nomeText.setText(dbEmpresa.getName(id));
@@ -96,8 +101,13 @@ public class addNewRegisterActivity extends AppCompatActivity {
                 empButton.setVisibility(View.VISIBLE);
                 registerButton.setEnabled(false);
                 empButton.setEnabled(true);
-                latText.setText("Lat: " + latlng.getLat());
-                lngText.setText("Lng: " + latlng.getLng());
+                if (!latlng.getLat().isEmpty()) {
+                    latText.setText("Lat: " + latlng.getLat().substring(0, 8));
+                    lngText.setText("Lng: " + latlng.getLng().substring(0, 8));
+                } else {
+                    latText.setText("Lat: 0.0");
+                    lngText.setText("Lng: 0.0");
+                }
             }
         }
 
@@ -208,11 +218,11 @@ public class addNewRegisterActivity extends AppCompatActivity {
 
     public void getCoord(){
         if(lat != 0.0)
-            latText.setText("Lat: " + lat.toString().substring(0,5));
+            latText.setText("Lat: " + lat.toString().substring(0,8));
         else
             latText.setText("Lat: " + lat.toString());
         if(lng != 0.0)
-            lngText.setText("Lng: " + lng.toString().substring(0,5));
+            lngText.setText("Lng: " + lng.toString().substring(0,8));
         else
             lngText.setText("Lng: " + lng.toString());
 
