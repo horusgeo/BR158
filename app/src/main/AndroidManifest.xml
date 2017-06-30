@@ -14,7 +14,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logotransp"
-        android:label="@string/app_name"
+        android:label="BR158"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LoginActivity">

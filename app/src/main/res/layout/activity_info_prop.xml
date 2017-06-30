@@ -272,7 +272,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="18dp"
-            android:text="Serviços comunitários disponiveis (em até 1km):"
+            android:text="Serviços comunitários disponíveis (em até 1km):"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -390,7 +390,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:text="Uso predominante\nna Regiao:"
+            android:text="Uso predominante\nna Região:"
             android:textSize="18sp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/switchSeguranca" />

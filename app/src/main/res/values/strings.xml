@@ -71,8 +71,8 @@
         <item>Carteira de identidade - Cônjuge herdeiro</item>
         <item>CPF - Herdeiro</item>
         <item>CPF - Cônjuge herdeiro</item>
-        <item>Comprovante de endereço</item>
-        <item>Certidão de casamento</item>
+        <item>Comprovante de endereço - Herdeiro</item>
+        <item>Certidão de casamento - Herdeiro</item>
         <item>Formal de partilha (caso não esteja registrado)</item>
         <item>Certidão de óbito </item>
         <item>Certidão de casamento do viúvo(a)</item>
@@ -99,7 +99,7 @@
         <item>Comprovante de CCIR 2010/2011/2012/2013/2014 (IMÓVEL RURAL)</item>
         <item>Declaração do ITR do último exercício (IMÓVEL RURAL)</item>
         <item>CAR (IMÓVEL RURAL)</item>
-        <item>Planta plotada de loteamento (IMÓVEL URBANO) ou Planta do terreno/ gleba (RURAL)</item>
+        <item>Planta plotada de loteamento (IMÓVEL URBANO) ou Planta do terreno / gleba (RURAL)</item>
         <item>Ata de posse</item>
         <item>Identidade e CPF do prefeito</item>
         <item>Certidão de casamento - prefeito</item>
