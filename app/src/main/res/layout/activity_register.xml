@@ -1253,7 +1253,8 @@
             android:textAlignment="textStart"
             android:gravity="start"
             android:layout_marginTop="0dp"
-            app:layout_constraintHorizontal_bias="0.0" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintBottom_toTopOf="@+id/registerAddButton"/>
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/registerAddButton"
