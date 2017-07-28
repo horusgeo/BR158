@@ -88,8 +88,10 @@ public class addNewRegisterActivity extends AppCompatActivity {
             if (tipo.equals("fisica")) {
                 nomeText.setText(dbProprietario.getName(id));
                 if(!latlng.getLat().isEmpty()) {
-                    latText.setText("Lat: " + latlng.getLat().substring(0, 8));
-                    lngText.setText("Lng: " + latlng.getLng().substring(0, 8));
+                    latText.setText("Lat: " + latlng.getLat());
+                    lngText.setText("Lng: " + latlng.getLng());
+                    //latText.setText("Lat: 0.0");
+                    //lngText.setText("Lng: 0.0");
                 }else{
                     latText.setText("Lat: 0.0");
                     lngText.setText("Lng: 0.0");
@@ -102,8 +104,10 @@ public class addNewRegisterActivity extends AppCompatActivity {
                 registerButton.setEnabled(false);
                 empButton.setEnabled(true);
                 if (!latlng.getLat().isEmpty()) {
-                    latText.setText("Lat: " + latlng.getLat().substring(0, 8));
-                    lngText.setText("Lng: " + latlng.getLng().substring(0, 8));
+                    latText.setText("Lat: " + latlng.getLat());
+                    lngText.setText("Lng: " + latlng.getLng());
+                    //latText.setText("Lat: 0.0");
+                    //lngText.setText("Lng: 0.0");
                 } else {
                     latText.setText("Lat: 0.0");
                     lngText.setText("Lng: 0.0");

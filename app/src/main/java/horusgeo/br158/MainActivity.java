@@ -251,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
                         if(list2Send.size() > 0) {
                             String msg = "Enviando Cadastros! Por Favor, aguarde!\nEnviando cadastro:" + list2Send.get(0);
                             cnt2Send += 1;
-                            Double progress = (cnt2Send / (double)max2Send) * 100;
+                            Double progress = (cnt2Send / (double)max2Send) * 1000;
                             dialogProgress.setProgress(progress.intValue());
                             dialogProgress.setMessage(msg);
                         }

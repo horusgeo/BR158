@@ -72,7 +72,7 @@ public class DBFotos extends SQLiteOpenHelper {
 
 
         for(int i = 0; i < cadastro.size(); i++) {
-            if(cadastro.get(i).getNova()==2) {
+            if(cadastro.get(i).getNova()>=1) {
                 values.put(ID, cadastro.get(i).getId());
                 values.put(TIPO, cadastro.get(i).getTipo());
                 values.put(FILE, cadastro.get(i).getFile());
