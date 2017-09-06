@@ -7,6 +7,7 @@ public class Benfeitorias {
     private String construcoes = "false";
     private String equipamentos = "false";
     private String croquis = "false";
+    private String plantacoes = "false";
 
     private String constucoesText;
     private String equipamentosText;
@@ -17,10 +18,13 @@ public class Benfeitorias {
         this.construcoes = "false";
         this.equipamentos = "false";
         this.croquis = "false";
+        this.plantacoes = "false";
 
         this.constucoesText = "";
         this.equipamentosText = "";
         this.croquisText = "";
+
+
     }
 
     public String getConstrucoes() {
@@ -47,6 +51,10 @@ public class Benfeitorias {
         this.croquis = croquis;
     }
 
+    public String getPlantacoes(){return plantacoes;}
+
+    public void setPlantacoes(String plantacoes) {this.plantacoes = plantacoes;}
+
     public String getConstucoesText() {
         return constucoesText;
     }
@@ -70,7 +78,6 @@ public class Benfeitorias {
     public void setCroquisText(String croquisText) {
         this.croquisText = croquisText;
     }
-
 
     public Integer getId() {
         return id;

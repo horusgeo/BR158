@@ -24,6 +24,8 @@ public class DBBenfeitorias extends SQLiteOpenHelper{
     private static final String EQUIPAMENTOSTEXT = "equipamentostext";
     private static final String CROQUIS = "croquis";
     private static final String CROQUISTEXT = "croquistext";
+    private static final String PLANTACOES = "plantacoes";
+
 
     public DBBenfeitorias(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
@@ -38,7 +40,9 @@ public class DBBenfeitorias extends SQLiteOpenHelper{
                 EQUIPAMENTOS + " TEXT," +
                 EQUIPAMENTOSTEXT + " TEXT," +
                 CROQUIS + " TEXT," +
-                CROQUISTEXT + " TEXT" +
+                CROQUISTEXT + " TEXT," +
+                PLANTACOES  + " TEXT" +
+
                 ")";
         db.execSQL(CREATE_PROP_TABLE);
     }
@@ -51,7 +55,8 @@ public class DBBenfeitorias extends SQLiteOpenHelper{
                 EQUIPAMENTOS + " INTEGER," +
                 EQUIPAMENTOSTEXT + " TEXT," +
                 CROQUIS + " INTEGER," +
-                CROQUISTEXT + " TEXT" +
+                CROQUISTEXT + " TEXT," +
+                PLANTACOES  + " INTEGER" +
                 ")";
         Log.d("HORUSGEO_LOG", CREATE_PROP_TABLE);
     }
@@ -73,7 +78,7 @@ public class DBBenfeitorias extends SQLiteOpenHelper{
         values.put(EQUIPAMENTOSTEXT, cadastro.getEquipamentosText());
         values.put(CROQUIS, cadastro.getCroquis());
         values.put(CROQUISTEXT, cadastro.getCroquisText());
-
+        values.put(PLANTACOES, cadastro.getPlantacoes());
 
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE + " WHERE " + ID + " = " + cadastro.getId();
@@ -121,7 +126,8 @@ public class DBBenfeitorias extends SQLiteOpenHelper{
                 benfeitorias.setEquipamentos(cursor.getString(3));
                 benfeitorias.setEquipamentosText(cursor.getString(4));
                 benfeitorias.setCroquis(cursor.getString(5));
-                benfeitorias.setConstucoesText(cursor.getString(6));
+                benfeitorias.setCroquisText(cursor.getString(6));
+                benfeitorias.setPlantacoes(cursor.getString(7));
 
             }
         }finally{
@@ -151,8 +157,8 @@ public class DBBenfeitorias extends SQLiteOpenHelper{
                 map.put("Equipamentos", cursor.getString(3));
                 map.put("EquipamentosText", cursor.getString(4));
                 map.put("Croquis", cursor.getString(5));
-                map.put("ConstucoesText", cursor.getString(6));
-
+                map.put("CroquisText", cursor.getString(6));
+                map.put("Plantacoes", cursor.getString(7));
             }
         }finally{
             cursor.close();

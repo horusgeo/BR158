@@ -41,6 +41,7 @@ public class infoPropActivity extends AppCompatActivity {
     EditText equipamentosText;
     Switch croquis;
     EditText croquisText;
+    Switch plantacoes;
 
     EditText tipo;
     EditText idade;
@@ -100,6 +101,8 @@ public class infoPropActivity extends AppCompatActivity {
         equipamentosText = (EditText) findViewById(R.id.benfEquipamentosText);
         croquis = (Switch) findViewById(R.id.switchCroquis);
         croquisText = (EditText) findViewById(R.id.benfCroquisText);
+        plantacoes = (Switch) findViewById(R.id.switchPlantacoes);
+
 
         tipo = (EditText) findViewById(R.id.tipoPlantacaoText);
         idade = (EditText) findViewById(R.id.idadePlantacaoText);
@@ -220,16 +223,23 @@ public class infoPropActivity extends AppCompatActivity {
             else
                 contrucoes.setChecked(false);
             construcoesText.setText(benf.getConstucoesText());
+
             if(benf.getEquipamentos().equals("true"))
                 equipamentos.setChecked(true);
             else
                 equipamentos.setChecked(false);
             equipamentosText.setText(benf.getEquipamentosText());
+
             if(benf.getCroquis().equals("true"))
                 croquis.setChecked(true);
             else
                 croquis.setChecked(false);
             croquisText.setText(benf.getCroquisText());
+
+            if (benf.getPlantacoes().equals("true"))
+                plantacoes.setChecked(true);
+            else
+                plantacoes.setChecked(false);
 
             tipo.setText(plant.getTipo());
             idade.setText(plant.getIdade());
@@ -281,8 +291,12 @@ public class infoPropActivity extends AppCompatActivity {
             benf.setConstucoesText(construcoesText.getText().toString());
             benf.setEquipamentos(String.valueOf(equipamentos.isChecked()));
             benf.setEquipamentosText(equipamentosText.getText().toString());
+
             benf.setCroquis(String.valueOf(croquis.isChecked()));
             benf.setCroquisText(croquisText.getText().toString());
+
+            benf.setPlantacoes(String.valueOf(plantacoes.isChecked()));
+
             benf.setId(newID);
 
             plant.setTipo(tipo.getText().toString());
