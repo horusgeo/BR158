@@ -163,7 +163,7 @@ public class DBFotos extends SQLiteOpenHelper {
     public String getStringImage(ContentResolver content, String path) throws IOException {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         Bitmap bmp = MediaStore.Images.Media.getBitmap(content, Uri.fromFile(new File(path)));
-        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        bmp.compress(Bitmap.CompressFormat.JPEG, 50, baos);
         byte[] imageBytes = baos.toByteArray();
         String encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
         return encodedImage;

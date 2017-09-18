@@ -17,6 +17,7 @@ import android.widget.Spinner;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -298,7 +299,10 @@ public class MainActivity extends AppCompatActivity {
                     return params;
                 }
             };
+
+        postRequest.setRetryPolicy(new DefaultRetryPolicy(360000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(postRequest);
+
 
     }
 
