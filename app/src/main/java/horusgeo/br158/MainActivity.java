@@ -3,6 +3,7 @@ package horusgeo.br158;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -64,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
     Button addNewEmp;
     Button sendRegister;
 
+    FloatingActionButton floatingMapa;
+
     Spinner filterSpinner;
 
     ProgressDialog dialogProgress;
@@ -107,6 +110,15 @@ public class MainActivity extends AppCompatActivity {
 //                finish();
 //            }
 //        });
+        floatingMapa = (FloatingActionButton)findViewById(R.id.floatingMapa);
+
+        floatingMapa.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(MainActivity.this, MapaActivity.class);
+                startActivity(intent);
+            }
+        });
 
         addNewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
