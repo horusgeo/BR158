@@ -25,6 +25,7 @@
         android:layout_gravity="bottom|right"
         android:layout_marginBottom="16dp"
         android:layout_marginLeft="16dp"
+        app:backgroundTint="@color/colorPrimary"
         app:layout_anchor="@+id/webview"
         app:layout_anchorGravity="bottom|left"
         app:srcCompat="@android:drawable/ic_menu_revert" />
@@ -37,6 +38,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="16dp"
         android:clickable="true"
+        app:backgroundTint="@color/colorPrimary"
         app:layout_anchor="@+id/webview"
         app:layout_anchorGravity="top|right"
         app:srcCompat="@android:drawable/ic_menu_mylocation" />
