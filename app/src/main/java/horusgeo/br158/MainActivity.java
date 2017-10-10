@@ -258,6 +258,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onResponse(String response) {
                     // response
+
                     Log.d("HORUSGEO_LOG", response);
                     String[] lista = response.split("-");
                     if(lista[0].equals("ok")) {

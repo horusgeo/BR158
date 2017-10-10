@@ -1,5 +1,6 @@
 package horusgeo.br158;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.webkit.CookieSyncManager;
 import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -25,7 +27,6 @@ public class MapaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
-
 
         webview = (WebView) findViewById(R.id.webview);
         assert webview != null;
@@ -75,6 +76,8 @@ public class MapaActivity extends AppCompatActivity {
 
     public void populateMap(){
         webview.loadUrl("javascript:loadImg('/storage/extSdCard/www')");
+        webview.loadUrl("javascript:loadImg('/storage/E84C-FF83/www')");
+        //webview.loadUrl("javascript:loadKml()");
     }
 
     private class WebAppInterface {
