@@ -1,12 +1,8 @@
 myMap = L.map('mapDiv',{
                 minZoom: 9,
                 maxZoom: 21})
-                //.setView([-19.315, -43.636], 15);
-                .setView([-13.046034, -51.881561], 10);
-                
-//myMap = L.map('mapDiv',{});
-
-
+                //.setView([-13.046034, -51.881561], 10); //Segmento02
+                .setView([-10.4412, -51.3623], 10);       //Segmento01
 
 function removeLayers(){
 
