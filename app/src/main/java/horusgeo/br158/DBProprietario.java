@@ -239,7 +239,7 @@ public class DBProprietario extends SQLiteOpenHelper {
                 cursor.moveToLast();
                 id = cursor.getInt(0) + 1;
             } else {
-                id = 100000;
+                id = 100009;
             }
         }finally{
             cursor.close();

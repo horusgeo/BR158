@@ -313,7 +313,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
-        postRequest.setRetryPolicy(new DefaultRetryPolicy(360000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        postRequest.setRetryPolicy(new DefaultRetryPolicy(3600000, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         queue.add(postRequest);
 
 

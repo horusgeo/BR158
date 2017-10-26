@@ -77,6 +77,8 @@ public class MapaActivity extends AppCompatActivity {
     public void populateMap(){
         webview.loadUrl("javascript:loadImg('/storage/extSdCard/www')");
         webview.loadUrl("javascript:loadImg('/storage/E84C-FF83/www')");
+        webview.loadUrl("javascript:loadImg('/storage/3363-3334/www')");
+        webview.loadUrl("javascript:loadImg('/storage/3731-3938/www')");
         //webview.loadUrl("javascript:loadKml()");
     }
 

@@ -213,7 +213,7 @@ public class DBEmpresa extends SQLiteOpenHelper {
                 cursor.moveToLast();
                 id = cursor.getInt(0) + 1;
             } else {
-                id = 190000;
+                id = 190003;
             }
         }finally{
             cursor.close();
