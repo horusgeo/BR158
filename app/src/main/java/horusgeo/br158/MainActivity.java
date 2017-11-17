@@ -236,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        final String url = "http://horusgeo.com.br/br158/dbfunctions/upload.php";
+        final String url = "http://horusgeo.com.br/br158/dbfunctions/upload2.php";
 
         dbBenfeitorias = new DBBenfeitorias(this, null, null, 1);
         dbConfrontantes = new DBConfrontantes(this, null, null, 1);
