@@ -114,7 +114,7 @@ public class MapaActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 floatingReturn.setVisibility(View.INVISIBLE);
-                floatingReturn.setClickable(false);
+                floatingReturn.setClickable(true);
                 fabReguaNew.setVisibility(View.VISIBLE);
                 fabReguaNew.setClickable(true);
                 fabReguaCancel.setVisibility(View.VISIBLE);
@@ -136,7 +136,7 @@ public class MapaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 floatingReturn.setVisibility(View.VISIBLE);
-                floatingReturn.setClickable(false);
+                floatingReturn.setClickable(true);
                 fabReguaNew.setVisibility(View.INVISIBLE);
                 fabReguaNew.setClickable(false);
                 fabReguaCancel.setVisibility(View.INVISIBLE);
@@ -152,7 +152,7 @@ public class MapaActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 floatingReturn.setVisibility(View.INVISIBLE);
-                floatingReturn.setClickable(false);
+                floatingReturn.setClickable(true);
                 floatingDesenho.setVisibility(View.INVISIBLE);
                 floatingDesenho.setClickable(false);
                 floatingRegua.setVisibility(View.INVISIBLE);
@@ -194,7 +194,6 @@ public class MapaActivity extends AppCompatActivity {
                 floatingPin.setVisibility(View.VISIBLE);
                 floatingPin.setClickable(true);
                 floatingRegua.setVisibility(View.VISIBLE);
-                floatingReturn.setClickable(true);
 
                 fabPointsNew.setVisibility(View.INVISIBLE);
                 fabPointsNew.setClickable(false);
